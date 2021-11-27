@@ -1,0 +1,36 @@
+.sideBar {
+    height: 100%;
+    min-width: 300px;
+    width: 15%;
+    /* position: fixed; */
+    z-index: 1;
+    /* top: 60px; */
+    left: 0;
+    color: white;
+    background-color: gray;
+    overflow-x: hidden;
+    padding-top: 75px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.user-info h4 {
+    text-decoration: underline;
+    cursor: pointer;
+    color: rgb(18, 158, 246);
+}
+
+.username {
+    margin-top: 20px;
+}

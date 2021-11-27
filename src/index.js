@@ -10,13 +10,14 @@ import { ChakraProvider } from '@chakra-ui/react';
 const APP_ID = 'ALj9gFe5KG5PcYPv1Q6u2Roj2aeB4jIBVuYrvW83';
 const SERVER_URL = 'https://dfbdma3eilm1.usemoralis.com:2053/server';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <MoralisProvider appId={APP_ID} serverUrl={SERVER_URL}>
-      <ChakraProvider>
-        <App />
-      </ChakraProvider>
-    </MoralisProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
+ReactDOM.render( 
+    <React.StrictMode>
+    <MoralisProvider appId = { APP_ID }
+    serverUrl = { SERVER_URL }>
+    <ChakraProvider>
+    <App/>
+    </ChakraProvider> 
+    </MoralisProvider> 
+    </React.StrictMode>,
+    document.getElementById('root')
 );

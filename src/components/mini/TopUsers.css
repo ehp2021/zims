@@ -1,0 +1,28 @@
+.discover-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    /* overflow-y: hidden; */
+    flex-direction: row;
+    justify-content: space-between;
+    height: 240px;
+    gap: 20px;
+}
+
+.discover-trip {
+    margin-top: 20px;
+    background-size: 200px 200px;
+    text-align: center;
+    height: 200px;
+    width: 200px;
+    min-height: 200px;
+    min-width: 200px;
+    border-radius: 100px;
+    color: white;
+    box-shadow: 5px 5px 4px 0 rgb(88, 88, 88);
+}
+
+.discover-trip p {
+    margin-top: 90px;
+    text-shadow: 1px 1px black;
+}
