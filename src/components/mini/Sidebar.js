@@ -14,7 +14,7 @@ const Sidebar = () => {
             <Link to='/settings'><h4>Edit Profile</h4></Link>
             <div className ='username'>
             <h5 style={{fontWeight: '900'}}>{user.attributes.username || 'ZIMUSER'}</h5>
-            <h5>{user.get('points') || "25459 Points"}</h5>
+            <h5>{user.get('points') || "25459 Points"} Points</h5>
             </div>
             {/* <h5>{user.get('points') || "25459 Points"}</h5> */}
         </div>

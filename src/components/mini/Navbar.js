@@ -2,6 +2,7 @@ import React from "react"
 import { useNavigate } from "react-router-dom";
 import { useMoralis } from 'react-moralis';
 import { BsMoonFill, BsFillSunFill } from 'react-icons/bs';
+import './Navbar.css';
 
 import {
     Box,
@@ -76,13 +77,13 @@ const Logout = () => {
             <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
               <Text
                 textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-                fontFamily={'Helvetica'}
-                fontSize={'30px'}
                 color={useColorModeValue('gray.800', 'white')}
                 onClick = {()=>{navigate('/')}}
                 cursor={'pointer'}
                 >
-                ZIMS
+                <div className="zims-logo">
+                  ZIMS
+                </div>
               </Text>
               <Text
                 textAlign={useBreakpointValue({ base: 'center', md: 'left' })}

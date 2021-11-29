@@ -37,12 +37,13 @@ const Profile = () => {
         <GridItem marginTop={'90px'} colSpan={4} marginRight={'20px'} borderRadius={'30px'} bg="gray">
         <div style={{padding: '20px'}}>NFTs Owned</div>
         
-          {/* NFT #1 */}
+          
           <Center py={12}>
+            {/* NFT #1 */}
             <Box
               role={'group'}
               p={6}
-              maxW={'330px'}
+              maxW={'300px'}
               w={'full'}
               bg={useColorModeValue('white', 'gray.800')}
               boxShadow={'2xl'}
@@ -53,7 +54,7 @@ const Profile = () => {
                 rounded={'lg'}
                 mt={-12}
                 pos={'relative'}
-                height={'230px'}
+                height={'180px'}
                 _after={{
                   transition: 'all .3s ease',
                   content: '""',
@@ -73,12 +74,12 @@ const Profile = () => {
                 }}>
                 <Image
                   rounded={'lg'}
-                  height={150}
+                  height={125}
                   width={100}
                   objectFit={'cover'}
                   src={IMAGE}
-                  marginTop={'60px'}
-                  marginLeft={'40px'}
+                  marginTop={'40px'}
+                  marginLeft={'30px'}
                 />
               </Box>
               <Stack pt={10} align={'center'}>
@@ -89,7 +90,7 @@ const Profile = () => {
                   Ferrari
                 </Heading>
                 <Stack direction={'row'} align={'center'}>
-                  <Text fontWeight={800} fontSize={'xl'}>
+                  <Text fontWeight={600} fontSize={'xl'}>
                     150,760 Points
                   </Text>
                 </Stack>
