@@ -10,14 +10,14 @@ const Sidebar = () => {
     return (
     <div className ='sideBar'>
         <div className="user-info">
-        <input type="image" img src ={image} alt="photo" style={{height:'150px'}}/>
-            <Link to='/settings'><h4>Edit Profile</h4></Link>
-            <div className ='username'>
-            <h5 style={{fontWeight: '900'}}>{user.attributes.username || 'ZIMUSER'}</h5>
-            <h5>{user.attributes.points} Points</h5>
+            <input type="image" img src ={user.attributes.displayPicture} alt="photo" style={{height:'150px', width: '150px', borderRadius: '100px'}}/>
+                <Link to='/settings'><h4>Edit Profile</h4></Link>
+                <div className ='username'>
+                <h5 style={{fontWeight: '900'}}>{user.attributes.username || 'ZIMUSER'}</h5>
+                <h5>{user.attributes.points} Points</h5>
+                </div>
+                {/* <h5>{user.get('points') || "25459 Points"}</h5> */}
             </div>
-            {/* <h5>{user.get('points') || "25459 Points"}</h5> */}
-        </div>
     </div>
     );
 

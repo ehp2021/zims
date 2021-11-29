@@ -36,7 +36,6 @@ img {
     min-width: 200px;
     border-radius: 100px;
     color: white;
-    box-shadow: 5px 5px 4px 0 rgb(88, 88, 88);
     margin-right: 5px;
 }
 
@@ -52,6 +51,7 @@ img {
     padding: 10px;
     margin-right: 10px;
     text-align: center;
+    min-width: 300px;
 }
 
 .topUserRanking h4 {
