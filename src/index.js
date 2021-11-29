@@ -4,6 +4,9 @@ import './index.css';
 import App from './components/App';
 import { MoralisProvider } from 'react-moralis';
 import { ChakraProvider } from '@chakra-ui/react';
+import '../node_modules/font-awesome/css/font-awesome.min.css'
+
+
 
 // const APP_ID = process.env.REACT_APP_MORALIS_APP_ID;
 // const SERVER_URL = process.env.REACT_APP_MORALIS_SERVER_URL;
@@ -16,8 +19,7 @@ ReactDOM.render(
     serverUrl = { SERVER_URL }>
     <ChakraProvider>
     <App/>
-    </ChakraProvider> 
-    </MoralisProvider> 
+    </ChakraProvider>  </MoralisProvider>
     </React.StrictMode>,
     document.getElementById('root')
 );

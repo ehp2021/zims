@@ -3,7 +3,10 @@ import { useState, useEffect } from 'react'
 import { Grid, GridItem } from "@chakra-ui/react";
 import Sidebar from '../mini/Sidebar';
 import { useMoralis } from "react-moralis";
+// import Moralis from 'moralis/dist/moralis.min.js';
 import moment from 'moment';
+import './Profile.css';
+import 'font-awesome/css/font-awesome.min.css'
 
 import {
     Box,
@@ -23,12 +26,21 @@ const IMAGE2 = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimag
 
 
 const Profile = () => {
-    const { user, setUserData } = useMoralis();
+    const { user, setUserData, Moralis } = useMoralis();
+    const Timestamp = Moralis.Object.extend('Timestamp');
+    const timeStamp = new Timestamp();
+    
+
 
     const [points, setPoints] = useState(user.attributes.points);
-    const [timeStamp, setTimeStamp] = useState()
+    //const [timeStamp, setTimeStamp] = useState()
+    
 
-    const clickHandler =(addedPoints)=>{
+    const clickHandler =(type, addedPoints)=>{
+    
+    timeStamp.set(`${type}`, Date.now());
+    timeStamp.set('user', user);
+    timeStamp.save();
       setPoints(prevState=>{
         return prevState+addedPoints;
       })
@@ -44,11 +56,8 @@ const Profile = () => {
     return (
       <div className="Profile-container" >
         <div className="grid-container">
-            {/* <div className = "sidebar-container">
-            <Sidebar style = {{ width: '20%'}}/> 
-            </div >  */}
           <Grid
-            h="900px"
+            h="1000px"
             templateRows="repeat(2, 1fr)"
             templateColumns="repeat(5, 1fr)"
             gap={4}
@@ -59,7 +68,7 @@ const Profile = () => {
     
             {/* NFTS BOX */}
             <GridItem marginTop={'90px'} colSpan={4} marginRight={'20px'} borderRadius={'30px'} bg="gray">
-            <div style={{padding: '20px'}}>NFTs Owned</div>
+            <div className="nfts-container" style={{padding: '20px'}}>NFTs Owned</div>
             
               
               <Center py={12}>
@@ -127,36 +136,46 @@ const Profile = () => {
             {/* ACTIONS */}
             
             <GridItem marginTop={'20px'} borderRadius={'30px'} colSpan={2} bg="gray">
-              <div style={{padding: '20px'}}> Actions to Get Points</div>
+              <div className="get-points-container" style={{padding: '20px'}}> Actions to Get Points</div>
+
               <div className="button-container" style={{display:"flex", flexDirection: "row", marginLeft:"10px"}}>
                 <div className="button-left" style={{display:"flex", flexDirection: "column", marginLeft:"10px"}}>
-                  <button className="work-button" style={{marginBottom: "10px", width: "150px",border: "1px solid black", borderRadius: "90px"}} 
-                    onClick={()=>clickHandler(1000)}>WORK</button>
-                  <button className="workout-button" style={{marginBottom: "10px", width: "150px", border: "1px solid black", borderRadius: "90px"}}
-                    onClick={()=>clickHandler(100)}
-                  >WORK OUT</button>
-                  <button className="workout-button" style={{marginBottom: "10px", width: "150px", border: "1px solid black", borderRadius: "90px"}}
-                    onClick={()=>clickHandler(100)}
-                  >MEDITATE</button>
+                  <button className="button-id"
+                    onClick={()=>clickHandler('work', 100)}>
+                    WORK 
+                       <i className="fas fa-briefcase"></i>
+                    </button>
+                  <button className="button-id"
+                    onClick={()=>clickHandler('workout', 100)}>
+                    WORK-OUT <i class="fas fa-dumbbell"></i></button>
+                  <button className="button-id"
+                    onClick={()=>clickHandler('meditate', 100)}>
+                    MEDITATE 
+                    <i className="fas fa-balance-scale"></i>
+                    </button>
                 </div>
                 <div className="button-right" style={{display:"flex", flexDirection: "column", marginLeft:"10px"}}>
-                  <button className="work-button" style={{marginBottom: "10px", width: "150px",border: "1px solid black", borderRadius: "90px"}}
-                    onClick={()=>clickHandler(100)}
-                  >VOLUNTEER</button>
-                  <button className="workout-button" style={{marginBottom: "10px", width: "150px", border: "1px solid black", borderRadius: "90px"}}
-                    onClick={()=>clickHandler(20)}
-                  >PARTY</button>
-                  <button className="workout-button" style={{marginBottom: "10px", width: "150px", border: "1px solid black", borderRadius: "90px"}}
-                    onClick={()=>clickHandler(40)}
-                  >SHOWER</button>
-                
+                  <button className="button-id"
+                    onClick={()=>clickHandler('volunteer', 100)}>
+                      VOLUNTEER<i class="fas fa-hands-helping"></i></button>
+                  <button className="button-id"
+                    onClick={()=>clickHandler('party', 20)}>
+                      PARTY 
+                      <i className="fas fa-glass-martini"></i>
+                      </button>
+                  <button className="button-id"
+                    onClick={()=>clickHandler('shower', 40)}>
+                      SHOWER 
+                      <i className="fas fa-shower"></i>
+                      </button>
                 </div>
+
               </div>
             </GridItem>
     
             {/* POINTS SUMMARY */}
             <GridItem marginTop={'20px'} marginRight={'20px'} borderRadius={'30px'} colSpan={2} bg="gray">
-              <div style={{padding: '20px'}}>Points Summary (last 7 days)</div>
+              <div className="points-summary-container" style={{padding: '20px'}}>Points Summary (last 7 days)</div>
             </GridItem>
             
             
