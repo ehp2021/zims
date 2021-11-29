@@ -34,6 +34,7 @@ const Settings = () => {
     }
 
 	const onSubmitPhoto = e => {
+		e.preventDefault();
 			setUserData({
 		displayPicture: displayPicture
 	})
@@ -86,7 +87,10 @@ const Settings = () => {
 
 					<div className="profile-pic-update-container">
 					<div className="profile-pic-container">
-						<img className="profile-pic" src={displayPicture} alt="" />
+						<img 
+						className="profile-pic" 
+						//style={{height: '100px', width: '100px', borderStyle: 'none'}}
+						src={displayPicture} alt="" />
 					</div> 
 
 					<form onSubmit={onSubmitPhoto}

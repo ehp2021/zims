@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 .sideBar {
     height: 100%;
     min-width: 300px;
@@ -33,4 +34,7 @@
 
 .username {
     margin-top: 20px;
+    font-family: 'Press Start 2P';
+    font-size: 15px;
+    /* color: rgb(30, 30, 30); */
 }

@@ -25,8 +25,8 @@ export default function Carousel() {
               <div className = 'user-container'>
                 <div className = 'topUserRanking' >
                     <h1> { `#${i+1}` } </h1> 
-                <h4 style = {{color: 'white'}}>{user.attributes.username}</h4> 
-                <h4 style = {{color: 'orange'}}>{user.attributes.points}</h4>
+                    <h4 style = {{color: 'white'}}>{user.attributes.username}</h4> 
+                    <h4 style = {{color: 'orange', marginTop:'20px'}}>{user.attributes.points.toLocaleString("en-US")} Points</h4>
                 </div>
                 <div className="user-info"><img src={user.attributes.displayPicture} alt="" style={{height:'200px'}}/></div>
               </div>
