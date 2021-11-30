@@ -20,6 +20,7 @@ const PointsSummary = () => {
         data={
           [
             ['Timestamp', 'Total Points'],
+            [2019, 150],
             [2020, 100],
             [2021, 250]
             // [ (data !==null && data.map((timeStamp) => moment(timeStamp.attributes.createdAt.toString()).format('MM/DD/YYYY, h:mm:ss a')), 

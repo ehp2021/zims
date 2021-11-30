@@ -17,7 +17,8 @@ const Sidebar = () => {
       pt='5rem'
       bg='gray'
       color='white'
-      zIndex='-1'
+      // pos='fixed'
+      // zIndex='-1'
       h='100%'
       w='20rem'
     >

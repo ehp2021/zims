@@ -5,14 +5,14 @@ import { Flex } from '@chakra-ui/react';
 const Home = () => {
   return (
     <>
+    <Flex >
       <Flex direction='row'>
-        <Flex>
-          <Sidebar style={{ width: '20px' }} />
-        </Flex>
+        <Sidebar style={{ width: '20px' }} />
+      </Flex>
         <Flex m='0 auto' mt={4}>
           <Carousel />
         </Flex>
-      </Flex>
+        </Flex>
     </>
   );
 };
