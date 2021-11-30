@@ -94,6 +94,20 @@ const Navbar = () => {
           >
             My Profile
           </Text>{' '}
+
+          <Text
+            textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
+            fontFamily={'heading'}
+            color={useColorModeValue('gray.800', 'white')}
+            ml={6}
+            cursor={'pointer'}
+            marginTop={'10px'}
+            onClick={() => {
+              navigate('/games');
+            }}
+          >
+            Arcade
+          </Text>{' '}
         </Flex>
         <Stack
           flex={{ base: 1, md: 0 }}

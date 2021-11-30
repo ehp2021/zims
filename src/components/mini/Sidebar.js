@@ -1,15 +1,18 @@
 import React, { useEffect } from 'react';
-import { useMoralis } from 'react-moralis';
+import { useMoralis,useMoralisQuery } from 'react-moralis';
 import { Link } from 'react-router-dom';
 import { Container, Flex, Text, Box, Heading, Button } from '@chakra-ui/react';
 import moment from 'moment';
 
 const Sidebar = () => {
   const { user, refetchUserData } = useMoralis();
+  const { data, error, isLoading } = useMoralisQuery('User');
+  console.log(user, "DATA line 10");
 
   useEffect(() => {
     refetchUserData();
-  }, []);
+    console.log(data, "data line 14")
+  }, [user]);
 
   return (
     <Container
@@ -50,11 +53,11 @@ const Sidebar = () => {
         </Box>
         <Box my={2}>
           <Heading size='md'>Points:</Heading>
-          <Text>{user ? user.attributes.points.toLocaleString('en-US') : 0}</Text>
+          {/* <Text>{user !== null ? user.attributes.points.toLocaleString('en-US') : 0}</Text> */}
         </Box>
         <Box my={2}>
           <Heading size='md'>Member Since:</Heading>
-          <Text>{user ? moment(user.attributes.createdAt.toString()).format('MM/DD/YYYY') : Date.now()}</Text>
+          {/* <Text>{user !== null ? moment(user.attributes.createdAt.toString()).format('MM/DD/YYYY') : Date.now()}</Text> */}
         </Box>
         <Link to='/mint'>
           <Button

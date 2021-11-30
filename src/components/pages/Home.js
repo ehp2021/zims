@@ -12,7 +12,7 @@ const Home = () => {
         <Flex m='0 auto' mt={4}>
           <Carousel />
         </Flex>
-        </Flex>
+    </Flex>
     </>
   );
 };
