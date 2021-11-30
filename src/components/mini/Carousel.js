@@ -11,7 +11,7 @@ export default function Carousel() {
   const { data, error, isLoading } = useMoralisCloudFunction("getUsers");
   // setUsers(data)
    
-    if(!isLoading && data !==null) console.log(data, "data")
+    // if(!isLoading && data !==null) console.log(data, "data")
 
 
 
