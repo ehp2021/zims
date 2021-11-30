@@ -50,18 +50,18 @@ const Sidebar = () => {
         </Box>
         <Box my={2}>
           <Heading size='md'>Points:</Heading>
-          <Text>{user.attributes.points.toLocaleString('en-US')}</Text>
+          <Text>{user ? user.attributes.points.toLocaleString('en-US') : 0}</Text>
         </Box>
         <Box my={2}>
           <Heading size='md'>Last Updated:</Heading>
-          <Text>{moment(user.attributes.updatedAt.toString()).format('MM/DD/YYYY')}</Text>
+          <Text>{user ? moment(user.attributes.updatedAt.toString()).format('MM/DD/YYYY') : Date.now()}</Text>
         </Box>
         <Link to='/mint'>
           <Button
-          my={4}
-          w='100%'
-          colorScheme='teal'
-          color='white'
+            my={4}
+            w='100%'
+            colorScheme='teal'
+            color='white'
           >Mint</Button>
         </Link>
       </Flex>
