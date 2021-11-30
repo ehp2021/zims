@@ -8,10 +8,7 @@ import {
   } from '@chakra-ui/react';
 
   const IMAGE =
-  'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fs1.cdn.autoevolution.com%2Fimages%2Fcars-gallery-149x%2FFERRARI-488-GTB-thumbnail-5428_4.jpg&f=1&nofb=1';
-// const IMAGE2 =
-//   'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimage.yachtcharterfleet.com%2Fcharter-MOONRAKER%2FMOONRAKER-17.jpg%3Fimage_id%3D70412%26k%3D32cd%26w%3D400%26h%3D400%26q%3D75%26o%3Diwc&f=1&nofb=1';
-
+  'https://images.pexels.com/photos/5126057/pexels-photo-5126057.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260';
 
 
 const NftsBox = () => {
@@ -64,14 +61,14 @@ const NftsBox = () => {
                 </Box>
                 <Stack pt={10} align={'center'}>
                   <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
-                    NFT #1
+                    My NFT #1
                   </Text>
                   <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
                     Ferrari
                   </Heading>
                   <Stack direction={'row'} align={'center'}>
                     <Text fontWeight={600} fontSize={'xl'}>
-                      150,760 Points
+                      150,000 Points
                     </Text>
                   </Stack>
                 </Stack>

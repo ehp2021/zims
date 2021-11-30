@@ -53,8 +53,8 @@ const Sidebar = () => {
           <Text>{user ? user.attributes.points.toLocaleString('en-US') : 0}</Text>
         </Box>
         <Box my={2}>
-          <Heading size='md'>Last Updated:</Heading>
-          <Text>{user ? moment(user.attributes.updatedAt.toString()).format('MM/DD/YYYY') : Date.now()}</Text>
+          <Heading size='md'>Member Since:</Heading>
+          <Text>{user ? moment(user.attributes.createdAt.toString()).format('MM/DD/YYYY') : Date.now()}</Text>
         </Box>
         <Link to='/mint'>
           <Button
@@ -62,6 +62,7 @@ const Sidebar = () => {
             w='100%'
             colorScheme='teal'
             color='white'
+            padding={'20px'}
           >Mint</Button>
         </Link>
       </Flex>

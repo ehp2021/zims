@@ -36,7 +36,7 @@ const PointsSummary = () => {
         data={
           [
             ['Time', 'Points'], 
-            ...data.filter(data => (data.attributes.user.id === user.id)).map((data)=>[data.attributes.createdAt, data.attributes.points])
+            ...data.filter(data => (data.attributes.user.id === user.id)).map((data)=>[data.attributes.updatedAt, data.attributes.points])
           ]
           }
         options={{
