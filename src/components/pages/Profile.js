@@ -7,7 +7,7 @@ import { useMoralis, useMoralisQuery } from 'react-moralis';
 import moment from 'moment';
 import './Profile.css';
 import 'font-awesome/css/font-awesome.min.css';
-import Chart from 'react-google-charts';
+import PointsSummary from '../mini/PointsSummary';
 
 import {
   Box,
@@ -272,44 +272,9 @@ const Profile = () => {
               Points Summary (last 7 days)
             </div>
             <Center>
-              <Chart
-                width={400}
-                height={'250px'}
-                chartType='AreaChart'
-                loader={<div>Loading Chart</div>}
-                data={[
-                  ['Timestamp', 'Total Points'],
-                  [
-                    data !== null &&
-                      data.map(timeStamp =>
-                        moment(timeStamp.attributes.createdAt.toString()).format(
-                          'MM/DD/YYYY, h:mm:ss a'
-                        )
-                      ),
-                    250,
-                    // user.map((user) => user.attributes.points)
-                  ],
-                ]}
-                options={{
-                  title: 'Points Summary',
-                  hAxis: { title: 'Timestamp', titleTextStyle: { color: '#4FD1C5' } },
-                  vAxis: { minValue: 0 },
-                  // For the legend to fit, we make the chart area smaller
-                  chartArea: { width: '60%', height: '70%' },
-                  // lineWidth: 25
-                }}
-              />
+              <PointsSummary />	
             </Center>
-            {/* {data !==null &&
-										<div>{data
-											// .slice(0, 10)
-											.map((timeStamp) => {
-											return (
-													<h3 key={timeStamp.attributes.id}>{moment(timeStamp.attributes.createdAt.toString()).format('MM/DD/YYYY, h:mm:ss a')}</h3>
-												)}
-										)}
-										</div>
-									} */}
+
           </GridItem>
         </Grid>
       </div>
