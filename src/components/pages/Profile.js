@@ -3,12 +3,14 @@ import { useState, useEffect } from 'react';
 import { Grid, GridItem } from '@chakra-ui/react';
 import Sidebar from '../mini/Sidebar';
 import { useMoralis, useMoralisQuery } from 'react-moralis';
+import { FaBeer } from 'react-icons/fa';
 // import Moralis from 'moralis/dist/moralis.min.js';
 import moment from 'moment';
-import './Profile.css';
-import 'font-awesome/css/font-awesome.min.css';
+    import './Profile.css';
+    import 'font-awesome/css/font-awesome.min.css';
 import PointsSummary from '../mini/PointsSummary';
 import NftsBox from '../mini/NftsBox';
+import Buttons from '../mini/Buttons'
 
 import {
   Box,
@@ -18,6 +20,8 @@ import {
   Text,
   Stack,
   Image,
+  Flex,
+  HStack, VStack
 } from '@chakra-ui/react';
 
 // https://blog.logrocket.com/using-plotly-react-build-dynamic-charts-graphs/
@@ -36,13 +40,13 @@ const Profile = () => {
       .find(data => data.attributes.work)?.createdAt
   );
   var b = moment(Date.now());
-  console.log(b.diff(a, 'minutes'));
-  console.log(
-    data
-      .filter(data => data.attributes.user.id === user.id)
-      .find(data => data.attributes.work)?.createdAt,
-    'timestamp data work'
-  );
+  // console.log(b.diff(a, 'minutes'));
+  // console.log(
+  //   data
+  //     .filter(data => data.attributes.user.id === user.id)
+  //     .find(data => data.attributes.work)?.createdAt,
+  //   'timestamp data work'
+  // );
   // console.log(data.attributes.user.attributes.username, "username")
 
   const [points, setPoints] = useState(user.attributes.points);
@@ -105,12 +109,11 @@ const Profile = () => {
           templateColumns='repeat(5, 1fr)'
           gap={4}
         >
-          {/* SIDEBAR */}
+
           <GridItem rowSpan={2} colSpan={1} bg='gray'>
             <Sidebar />
           </GridItem>
 
-          {/* NFTS BOX */}
           <GridItem
             marginTop={'90px'}
             colSpan={4}
@@ -123,82 +126,31 @@ const Profile = () => {
             </div>
 
             <Center py={12}>
-              {/* NFT #1 */}
               <NftsBox />
             </Center>
           </GridItem>
 
-          {/* ACTIONS */}
-
-          <GridItem marginTop={'20px'} borderRadius={'30px'} colSpan={2} bg='gray'>
-            <div className='get-points-container' style={{ padding: '20px' }}>
-              {' '}
-              Actions to Get Points
-            </div>
-            <Center>
-              <div
-                className='button-container'
-                style={{ display: 'flex', flexDirection: 'row', marginLeft: '10px' }}
-              >
-                <div
-                  className='button-left'
-                  style={{ display: 'flex', flexDirection: 'column', marginLeft: '10px' }}
-                >
-                  <button
-                    className='button-id'
-                    style={{ background: isDisabled.work && 'black' }}
-                    onClick={() => clickHandler('work', 100)}
-                    disabled={isDisabled.work}
-                  >
-                    WORK <i className='fas fa-briefcase'></i>
-                  </button>
-                  <button
-                    className='button-id'
-                    onClick={() => clickHandler('workout', 100)}
-                    disabled={isDisabled.workout}
-                  >
-                    WORK-OUT <i class='fas fa-dumbbell'></i>
-                  </button>
-                  <button
-                    className='button-id'
-                    onClick={() => clickHandler('meditate', 100)}
-                    disabled={isDisabled.meditate}
-                  >
-                    MEDITATE
-                    <i className='fas fa-balance-scale'></i>
-                  </button>
-                </div>
-                <div
-                  className='button-right'
-                  style={{ display: 'flex', flexDirection: 'column', marginLeft: '10px' }}
-                >
-                  <button
-                    className='button-id'
-                    onClick={() => clickHandler('volunteer', 100)}
-                    disabled={isDisabled.volunteer}
-                  >
-                    VOLUNTEER<i class='fas fa-hands-helping'></i>
-                  </button>
-                  <button
-                    className='button-id'
-                    onClick={() => clickHandler('party', 20)}
-                    disabled={isDisabled.party}
-                  >
-                    PARTY
-                    <i className='fas fa-glass-martini'></i>
-                  </button>
-                  <button
-                    className='button-id'
-                    onClick={() => clickHandler('shower', 40)}
-                    disabled={isDisabled.shower}
-                  >
-                    SHOWER
-                    <i className='fas fa-shower'></i>
-                  </button>
-                </div>
-              </div>
-            </Center>
-          </GridItem>
+  
+            <GridItem marginTop={'20px'} borderRadius={'30px'} colSpan={2} bg='gray' >
+                 <Text className='zimFont' p='20px' mb={7}>
+                    Actions to Get Points
+                </Text>
+                 <Center>
+                   <HStack  justify='center' align='center'  spacing={1}  >
+                       <VStack direction='column' spacing={1} >
+                           <Buttons name={'work'} points={100} time={1} icon={'fas fa-briefcase'} style={{width: '600px'}}/>
+                           <Buttons name={'workout'} points={100} time={1} icon={'fas fa-dumbbell'} />
+                           <Buttons name={'meditate'} points={100} time={1} icon={'fas fa-balance-scale'} />
+                        </VStack>
+                   <VStack  direction='column'  spacing={1} >
+                           <Buttons name={'volunteer'} points={100} time={1} icon={'fas fa-hands-helping'} />
+                           <Buttons name={'party'} points={100} time={1} icon={'fas fa-glass-martini'}/>
+                           <Buttons name={'shower'} points={100} time={1} icon={'fas fa-shower'} />
+                       </VStack>
+                   </HStack>
+                   </Center>
+            </GridItem>
+        
 
           {/* POINTS SUMMARY */}
           <GridItem

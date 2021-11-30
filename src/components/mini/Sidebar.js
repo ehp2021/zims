@@ -56,6 +56,9 @@ const Sidebar = () => {
           <Heading size='md'>Last Updated:</Heading>
           <Text>{moment(user.attributes.updatedAt.toString()).format('MM/DD/YYYY')}</Text>
         </Box>
+        <Link to='/mint'>
+          <button></button>
+        </Link>
       </Flex>
     </Container>
   );
