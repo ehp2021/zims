@@ -32,7 +32,7 @@ const Profile = () => {
     const { data, error, isLoading } = useMoralisQuery("Timestamp");
 
     // data.attributes.work && console.log(data.attributes.createdAt, "timestamp data work")
-    console.log(user.id)
+
     var a = moment(data.filter(data => data.attributes.user.id === user.id).find(data => data.attributes.work)?.createdAt);
     var b = moment(Date.now());
     console.log(b.diff(a, 'minutes'));
@@ -101,7 +101,7 @@ const Profile = () => {
             <GridItem marginTop={'90px'} colSpan={4} marginRight={'20px'} borderRadius={'30px'} bg="gray">
             <div className="nfts-container" style={{padding: '20px'}}>NFTs Owned</div>
             
-              
+            
               <Center py={12}>
                 {/* NFT #1 */}
                 <Box
@@ -168,57 +168,58 @@ const Profile = () => {
             
             <GridItem marginTop={'20px'} borderRadius={'30px'} colSpan={2} bg="gray">
               <div className="get-points-container" style={{padding: '20px'}}> Actions to Get Points</div>
-
+              <Center>
               <div className="button-container" style={{display:"flex", flexDirection: "row", marginLeft:"10px"}}>
                 <div className="button-left" style={{display:"flex", flexDirection: "column", marginLeft:"10px"}}>
-                  <button className="button-id"
+                  <button className="button-id" 
+                    style={{background: isDisabled.work && 'black'}}
                     onClick={()=>clickHandler('work', 100)} disabled={isDisabled.work}>
-                    WORK 
-                       <i className="fas fa-briefcase"></i>
+                    WORK <i className="fas fa-briefcase"></i>
                     </button>
                   <button className="button-id"
-                    onClick={()=>clickHandler('workout', 100)}>
+                    onClick={()=>clickHandler('workout', 100)} disabled={isDisabled.workout}>
                     WORK-OUT <i class="fas fa-dumbbell"></i></button>
                   <button className="button-id"
-                    onClick={()=>clickHandler('meditate', 100)}>
+                    onClick={()=>clickHandler('meditate', 100)} disabled={isDisabled.meditate}>
                     MEDITATE 
                     <i className="fas fa-balance-scale"></i>
                     </button>
                 </div>
                 <div className="button-right" style={{display:"flex", flexDirection: "column", marginLeft:"10px"}}>
                   <button className="button-id"
-                    onClick={()=>clickHandler('volunteer', 100)}>
+                    onClick={()=>clickHandler('volunteer', 100)} disabled={isDisabled.volunteer}>
                       VOLUNTEER<i class="fas fa-hands-helping"></i></button>
                   <button className="button-id"
-                    onClick={()=>clickHandler('party', 20)}>
+                    onClick={()=>clickHandler('party', 20)} disabled={isDisabled.party}>
                       PARTY 
                       <i className="fas fa-glass-martini"></i>
                       </button>
                   <button className="button-id"
-                    onClick={()=>clickHandler('shower', 40)}>
+                    onClick={()=>clickHandler('shower', 40)} disabled={isDisabled.shower}>
                       SHOWER 
                       <i className="fas fa-shower"></i>
                       </button>
                 </div>
-
-              </div>
+                </div>
+                </Center>
+              
             </GridItem>
     
             {/* POINTS SUMMARY */}
             <GridItem marginTop={'20px'} marginRight={'20px'} borderRadius={'30px'} colSpan={2} bg="gray">
               <div className="points-summary-container" style={{padding: '20px'}}>Points Summary (last 7 days)</div>
-							<div className="chart-container" style={{marginLeft: '20px'}}>
+							<Center>
 									<Chart
 										width={400}
-										height={'300px'}
+										height={'250px'}
 										chartType="AreaChart"
 										loader={<div>Loading Chart</div>}
 										data={
 											[
 											['Timestamp', 'Total Points'],
 											[data !==null && data.map((timeStamp) => moment(timeStamp.attributes.createdAt.toString()).format('MM/DD/YYYY, h:mm:ss a')), 
-												250
-												// user !== null && user.map((user) => user.attributes.points)
+                      250
+												// user.map((user) => user.attributes.points)
 											]
 										]
 									}
@@ -227,11 +228,11 @@ const Profile = () => {
 											hAxis: { title: 'Timestamp', titleTextStyle: { color: '#4FD1C5' } },
 											vAxis: { minValue: 0 },
 											// For the legend to fit, we make the chart area smaller
-											chartArea: { width: '50%', height: '70%' },
+											chartArea: { width: '60%', height: '70%' },
 											// lineWidth: 25
 										}}
 									/>			
-								</div>
+								</Center>
 									{/* {data !==null && 
 										<div>{data
 											// .slice(0, 10)
