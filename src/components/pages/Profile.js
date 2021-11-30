@@ -161,7 +161,7 @@ const Profile = () => {
             bg='gray'
           >
             <div className='points-summary-container' style={{ padding: '20px' }}>
-              Points Summary (last 7 days)
+              Points Summary
             </div>
             <Center>
               <PointsSummary />	

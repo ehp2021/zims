@@ -6,6 +6,7 @@ import Profile from './pages/Profile';
 import Home from './pages/Home';
 import Settings from './pages/Settings';
 import Navbar from './mini/Navbar';
+import Mint from './pages/Mint';
 
 const App = () => {
   const { isAuthenticated } = useMoralis();
@@ -23,6 +24,10 @@ const App = () => {
           <Route
             path='/settings'
             element={isAuthenticated ? <Settings /> : <Navigate to='/' />}
+          />
+          <Route
+            path='/mint'
+            element={isAuthenticated ? <Mint /> : <Navigate to='/' />}
           />
         </Routes>
       </Router>

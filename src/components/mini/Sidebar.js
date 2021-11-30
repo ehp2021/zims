@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useMoralis } from 'react-moralis';
 import { Link } from 'react-router-dom';
-import { Container, Flex, Text, Box, Heading } from '@chakra-ui/react';
+import { Container, Flex, Text, Box, Heading, Button } from '@chakra-ui/react';
 import moment from 'moment';
 
 const Sidebar = () => {
@@ -57,7 +57,12 @@ const Sidebar = () => {
           <Text>{moment(user.attributes.updatedAt.toString()).format('MM/DD/YYYY')}</Text>
         </Box>
         <Link to='/mint'>
-          <button></button>
+          <Button
+          my={4}
+          w='100%'
+          colorScheme='teal'
+          color='white'
+          >Mint</Button>
         </Link>
       </Flex>
     </Container>
