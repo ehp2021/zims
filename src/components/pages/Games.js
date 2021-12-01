@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const Games = () => {
   return (
     <>
-    <Flex >
+    <Flex background={'radial-gradient(600px at 60% 50% , #cccccc 30%, #191C27 80%)'}>
       <Flex direction='row'>
         <Sidebar style={{ width: '20px' }} />
       </Flex>

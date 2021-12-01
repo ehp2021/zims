@@ -11,6 +11,8 @@ import {
   Image } from '@chakra-ui/react';
 import './Mint.css';
 import Sidebar from '../mini/Sidebar';
+import axios from 'axios';
+import {useState,useEffect} from 'react'
 
 //ROW 2
 //castle
@@ -35,13 +37,30 @@ const IMAGE7 ='https://images.pexels.com/photos/933498/pexels-photo-933498.jpeg?
 
 
 const Mint = () => {
+  const [NFTs,setNFTs]=useState([]);
+  const [NFTsFetched,setNFTsFetched] = useState(false)
+
+
+
+  async function getAll () {
+    const result = await axios.get('https://zims-nft-api.herokuapp.com/')
+    setNFTs(result.data);
+    console.log(result.data, "Working???????");
+    setNFTsFetched(true);
+  }
+
+  useEffect(()=>{
+    getAll() 
+  },[])
+
+
 
   return ( 
     <div className='mint-container'>
       <div className='mint-grid'>
         <Grid
           h='1500px'
-          templateRows='repeat(4, 1fr)'
+          templateRows='repeat(11, 1fr)'
           templateColumns='repeat(5, 1fr)'
           gap={4}
           // padding={'20px'}
@@ -49,7 +68,7 @@ const Mint = () => {
         >
 
           {/* ROW 1 */}
-          <GridItem rowSpan={4} colSpan={1} bg='gray' > 
+          <GridItem rowSpan={11} colSpan={1} bg='gray' > 
             <div><Sidebar style={{ width: '15px' }} /></div>
           </GridItem>
           <GridItem marginTop={'50px'} rowSpan={1} colSpan={4} bg='none' borderRadius={'30px'}> 
@@ -60,6 +79,8 @@ const Mint = () => {
 
 {/* ROW 2 */}
       {/* ROW 2, item 1 */}
+      {NFTsFetched && NFTs.map(nft=>{
+        return(
           <GridItem rowSpan={1} colSpan={1} bg='none' borderRadius={'30px'}> 
             <Center>
               <Box
@@ -67,7 +88,7 @@ const Mint = () => {
                 p={6}
                 maxW={'300px'}
                 w={'full'}
-                bg={useColorModeValue('white', 'gray.800')}
+                bg={'gray.800'}
                 boxShadow={'2xl'}
                 rounded={'lg'}
                 pos={'relative'}
@@ -86,7 +107,7 @@ const Mint = () => {
                     pos: 'absolute',
                     top: 5,
                     left: 0,
-                    backgroundImage: `url(${IMAGE0})`,
+                    backgroundImage: `url(${nft.photo})`,
                     filter: 'blur(15px)',
                     zIndex: -1,
                   }}
@@ -100,22 +121,22 @@ const Mint = () => {
                     rounded={'lg'}
                     height={125}
                     width={100}
-                    objectFit={'cover'}
-                    src={IMAGE0}
+                    objectFit={'contain'}
+                    src={nft.photo}
                     marginTop={'40px'}
                     marginLeft={'30px'}
                   />
                 </Box>
                 <Stack pt={10} align={'center'}>
                   <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
-                    NFT #1
+                    NFT #{nft.id}
                   </Text>
                   <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
-                    Castle
+                    {nft.title}
                   </Heading>
                   <Stack direction={'row'} align={'center'}>
                     <Text fontWeight={600} fontSize={'xl'}>
-                      2,750,000 Points
+                      {`${nft.price} Points`}
                     </Text>
                   </Stack>
                   <Stack>
@@ -130,530 +151,9 @@ const Mint = () => {
               </Box>
             </Center>
           </GridItem>
-
-    {/* ROW 2, item 2 */}
-          <GridItem rowSpan={1} colSpan={1} bg='none' borderRadius={'30px'}> 
-            <Center>
-              <Box
-                role={'group'}
-                p={6}
-                maxW={'300px'}
-                w={'full'}
-                bg={useColorModeValue('white', 'gray.800')}
-                boxShadow={'2xl'}
-                rounded={'lg'}
-                pos={'relative'}
-                zIndex={1}
-              >
-                <Box
-                  rounded={'lg'}
-                  mt={-12}
-                  pos={'relative'}
-                  height={'180px'}
-                  _after={{
-                    transition: 'all .3s ease',
-                    content: '""',
-                    w: 'full',
-                    h: 'full',
-                    pos: 'absolute',
-                    top: 5,
-                    left: 0,
-                    backgroundImage: `url(${IMAGE})`,
-                    filter: 'blur(15px)',
-                    zIndex: -1,
-                  }}
-                  _groupHover={{
-                    _after: {
-                      filter: 'blur(20px)',
-                    },
-                  }}
-                >
-                  <Image
-                    rounded={'lg'}
-                    height={125}
-                    width={100}
-                    objectFit={'cover'}
-                    src={IMAGE}
-                    marginTop={'40px'}
-                    marginLeft={'30px'}
-                  />
-                </Box>
-                <Stack pt={10} align={'center'}>
-                  <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
-                    NFT #2
-                  </Text>
-                  <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
-                    Yacht
-                  </Heading>
-                  <Stack direction={'row'} align={'center'}>
-                    <Text fontWeight={600} fontSize={'xl'}>
-                      650,000 Points
-                    </Text>
-                  </Stack>
-                  <Stack>
-                  <Button
-                      my={4}
-                      w='100%'
-                      colorScheme='teal'
-                      color='white'
-                    >Mint</Button>
-                  </Stack>
-                </Stack>
-              </Box>
-            </Center>
-          </GridItem>
-    
-    {/* ROW 2, item 3*/}
-          <GridItem rowSpan={1} colSpan={1} bg='none' borderRadius={'30px'}> 
-          <Center>
-              <Box
-                role={'group'}
-                p={6}
-                maxW={'300px'}
-                w={'full'}
-                bg={useColorModeValue('white', 'gray.800')}
-                boxShadow={'2xl'}
-                rounded={'lg'}
-                pos={'relative'}
-                zIndex={1}
-              >
-                <Box
-                  rounded={'lg'}
-                  mt={-12}
-                  pos={'relative'}
-                  height={'180px'}
-                  _after={{
-                    transition: 'all .3s ease',
-                    content: '""',
-                    w: 'full',
-                    h: 'full',
-                    pos: 'absolute',
-                    top: 5,
-                    left: 0,
-                    backgroundImage: `url(${IMAGE2})`,
-                    filter: 'blur(15px)',
-                    zIndex: -1,
-                  }}
-                  _groupHover={{
-                    _after: {
-                      filter: 'blur(20px)',
-                    },
-                  }}
-                >
-                  <Image
-                    rounded={'lg'}
-                    height={125}
-                    width={100}
-                    objectFit={'cover'}
-                    src={IMAGE2}
-                    marginTop={'40px'}
-                    marginLeft={'30px'}
-                  />
-                </Box>
-                <Stack pt={10} align={'center'}>
-                  <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
-                    NFT #3
-                  </Text>
-                  <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
-                    Ferrari
-                  </Heading>
-                  <Stack direction={'row'} align={'center'}>
-                    <Text fontWeight={600} fontSize={'xl'}>
-                      150,000 Points
-                    </Text>
-                  </Stack>
-                  <Stack>
-                  <Button
-                      my={4}
-                      w='100%'
-                      colorScheme='teal'
-                      color='white'
-                    >Mint</Button>
-                  </Stack>
-                </Stack>
-              </Box>
-            </Center>
-          </GridItem>
-
-    {/* ROW 2, item 4 */}
-        <GridItem rowSpan={1} colSpan={1} bg='none' borderRadius={'30px'}> 
-          <Center>
-              <Box
-                role={'group'}
-                p={6}
-                maxW={'300px'}
-                w={'full'}
-                bg={useColorModeValue('white', 'gray.800')}
-                boxShadow={'2xl'}
-                rounded={'lg'}
-                pos={'relative'}
-                zIndex={1}
-              >
-                <Box
-                  rounded={'lg'}
-                  mt={-12}
-                  pos={'relative'}
-                  height={'180px'}
-                  _after={{
-                    transition: 'all .3s ease',
-                    content: '""',
-                    w: 'full',
-                    h: 'full',
-                    pos: 'absolute',
-                    top: 5,
-                    left: 0,
-                    backgroundImage: `url(${IMAGE3})`,
-                    filter: 'blur(15px)',
-                    zIndex: -1,
-                  }}
-                  _groupHover={{
-                    _after: {
-                      filter: 'blur(20px)',
-                    },
-                  }}
-                >
-                  <Image
-                    rounded={'lg'}
-                    height={125}
-                    width={100}
-                    objectFit={'cover'}
-                    src={IMAGE3}
-                    marginTop={'40px'}
-                    marginLeft={'30px'}
-                  />
-                </Box>
-                <Stack pt={10} align={'center'}>
-                  <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
-                    NFT #4
-                  </Text>
-                  <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
-                    Aston Martin
-                  </Heading>
-                  <Stack direction={'row'} align={'center'}>
-                    <Text fontWeight={600} fontSize={'xl'}>
-                      100,000 Points
-                    </Text>
-                  </Stack>
-                  <Stack>
-                  <Button
-                      my={4}
-                      w='100%'
-                      colorScheme='teal'
-                      color='white'
-                    >Mint</Button>
-                  </Stack>
-                </Stack>
-              </Box>
-            </Center>
-          </GridItem>
-
-{/* ROW 3 */}
-
-    {/* ROW 3, item 1 */}
-        <GridItem rowSpan={1} colSpan={1} bg='none' borderRadius={'30px'}> 
-          <Center>
-              <Box
-                role={'group'}
-                p={6}
-                maxW={'300px'}
-                w={'full'}
-                bg={useColorModeValue('white', 'gray.800')}
-                boxShadow={'2xl'}
-                rounded={'lg'}
-                pos={'relative'}
-                zIndex={1}
-              >
-                <Box
-                  rounded={'lg'}
-                  mt={-12}
-                  pos={'relative'}
-                  height={'180px'}
-                  _after={{
-                    transition: 'all .3s ease',
-                    content: '""',
-                    w: 'full',
-                    h: 'full',
-                    pos: 'absolute',
-                    top: 5,
-                    left: 0,
-                    backgroundImage: `url(${IMAGE4})`,
-                    filter: 'blur(15px)',
-                    zIndex: -1,
-                  }}
-                  _groupHover={{
-                    _after: {
-                      filter: 'blur(20px)',
-                    },
-                  }}
-                >
-                  <Image
-                    rounded={'lg'}
-                    height={125}
-                    width={100}
-                    objectFit={'cover'}
-                    src={IMAGE4}
-                    marginTop={'40px'}
-                    marginLeft={'30px'}
-                  />
-                </Box>
-                <Stack pt={10} align={'center'}>
-                  <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
-                    NFT #5
-                  </Text>
-                  <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
-                    House
-                  </Heading>
-                  <Stack direction={'row'} align={'center'}>
-                    <Text fontWeight={600} fontSize={'xl'}>
-                      75,000 Points
-                    </Text>
-                  </Stack>
-                  <Stack>
-                  <Button
-                      my={4}
-                      w='100%'
-                      colorScheme='teal'
-                      color='white'
-                    >Mint</Button>
-                  </Stack>
-                </Stack>
-              </Box>
-            </Center>
-          </GridItem>
-
-    {/* ROW 3, item 2 */}
-        <GridItem rowSpan={1} colSpan={1} bg='none' borderRadius={'30px'}> 
-          <Center>
-              <Box
-                role={'group'}
-                p={6}
-                maxW={'300px'}
-                w={'full'}
-                bg={useColorModeValue('white', 'gray.800')}
-                boxShadow={'2xl'}
-                rounded={'lg'}
-                pos={'relative'}
-                zIndex={1}
-              >
-                <Box
-                  rounded={'lg'}
-                  mt={-12}
-                  pos={'relative'}
-                  height={'180px'}
-                  _after={{
-                    transition: 'all .3s ease',
-                    content: '""',
-                    w: 'full',
-                    h: 'full',
-                    pos: 'absolute',
-                    top: 5,
-                    left: 0,
-                    backgroundImage: `url(${IMAGE5})`,
-                    filter: 'blur(15px)',
-                    zIndex: -1,
-                  }}
-                  _groupHover={{
-                    _after: {
-                      filter: 'blur(20px)',
-                    },
-                  }}
-                >
-                  <Image
-                    rounded={'lg'}
-                    height={125}
-                    width={100}
-                    objectFit={'cover'}
-                    src={IMAGE5}
-                    marginTop={'40px'}
-                    marginLeft={'30px'}
-                  />
-                </Box>
-                <Stack pt={10} align={'center'}>
-                  <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
-                    NFT #6
-                  </Text>
-                  <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
-                    Car
-                  </Heading>
-                  <Stack direction={'row'} align={'center'}>
-                    <Text fontWeight={600} fontSize={'xl'}>
-                      20,000 Points
-                    </Text>
-                  </Stack>
-                  <Stack>
-                  <Button
-                      my={4}
-                      w='100%'
-                      colorScheme='teal'
-                      color='white'
-                    >Mint</Button>
-                  </Stack>
-                </Stack>
-              </Box>
-            </Center>
-        </GridItem>
-
-{/* ROW 3, item 3 */}
-          <GridItem rowSpan={1} colSpan={1} bg='none' borderRadius={'30px'}> 
-          <Center>
-              <Box
-                role={'group'}
-                p={6}
-                maxW={'300px'}
-                w={'full'}
-                bg={useColorModeValue('white', 'gray.800')}
-                boxShadow={'2xl'}
-                rounded={'lg'}
-                pos={'relative'}
-                zIndex={1}
-              >
-                <Box
-                  rounded={'lg'}
-                  mt={-12}
-                  pos={'relative'}
-                  height={'180px'}
-                  _after={{
-                    transition: 'all .3s ease',
-                    content: '""',
-                    w: 'full',
-                    h: 'full',
-                    pos: 'absolute',
-                    top: 5,
-                    left: 0,
-                    backgroundImage: `url(${IMAGE6})`,
-                    filter: 'blur(15px)',
-                    zIndex: -1,
-                  }}
-                  _groupHover={{
-                    _after: {
-                      filter: 'blur(20px)',
-                    },
-                  }}
-                >
-                  <Image
-                    rounded={'lg'}
-                    height={125}
-                    width={100}
-                    objectFit={'cover'}
-                    src={IMAGE6}
-                    marginTop={'40px'}
-                    marginLeft={'30px'}
-                  />
-                </Box>
-                <Stack pt={10} align={'center'}>
-                  <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
-                    NFT #7
-                  </Text>
-                  <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
-                    Motorcycle
-                  </Heading>
-                  <Stack direction={'row'} align={'center'}>
-                    <Text fontWeight={600} fontSize={'xl'}>
-                      10,000 Points
-                    </Text>
-                  </Stack>
-                  <Stack>
-                  <Button
-                      my={4}
-                      w='100%'
-                      colorScheme='teal'
-                      color='white'
-                    >Mint</Button>
-                  </Stack>
-                </Stack>
-              </Box>
-            </Center>
-          </GridItem>
-
-{/* ROW 3, item 4 */}
-          <GridItem rowSpan={1} colSpan={1} bg='none' borderRadius={'30px'}> 
-          <Center>
-              <Box
-                role={'group'}
-                p={6}
-                maxW={'300px'}
-                w={'full'}
-                bg={useColorModeValue('white', 'gray.800')}
-                boxShadow={'2xl'}
-                rounded={'lg'}
-                pos={'relative'}
-                zIndex={1}
-              >
-                <Box
-                  rounded={'lg'}
-                  mt={-12}
-                  pos={'relative'}
-                  height={'180px'}
-                  _after={{
-                    transition: 'all .3s ease',
-                    content: '""',
-                    w: 'full',
-                    h: 'full',
-                    pos: 'absolute',
-                    top: 5,
-                    left: 0,
-                    backgroundImage: `url(${IMAGE7})`,
-                    filter: 'blur(15px)',
-                    zIndex: -1,
-                  }}
-                  _groupHover={{
-                    _after: {
-                      filter: 'blur(20px)',
-                    },
-                  }}
-                >
-                  <Image
-                    rounded={'lg'}
-                    height={125}
-                    width={100}
-                    objectFit={'cover'}
-                    src={IMAGE7}
-                    marginTop={'40px'}
-                    marginLeft={'30px'}
-                  />
-                </Box>
-                <Stack pt={10} align={'center'}>
-                  <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
-                    NFT #8
-                  </Text>
-                  <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
-                    Dog
-                  </Heading>
-                  <Stack direction={'row'} align={'center'}>
-                    <Text fontWeight={600} fontSize={'xl'}>
-                      5,000 Points
-                    </Text>
-                  </Stack>
-                  <Stack>
-                  <Button
-                      my={4}
-                      w='100%'
-                      colorScheme='teal'
-                      color='white'
-                    >Mint</Button>
-                  </Stack>
-                </Stack>
-              </Box>
-            </Center>
-          </GridItem>
-
-          {/* ROW 4 */}
-          {/* <GridItem rowSpan={1} colSpan={1} bg='gray' borderRadius={'30px'}> 
-              <div>hi</div>
-          </GridItem>
-
-          <GridItem rowSpan={1} colSpan={1} bg='gray' borderRadius={'30px'}> 
-              <div>hi</div>
-          </GridItem>
-
-          <GridItem rowSpan={1} colSpan={1} bg='gray' borderRadius={'30px'}> 
-              <div>hi</div>
-          </GridItem>
-
-          <GridItem rowSpan={1} colSpan={1} bg='gray' borderRadius={'30px'}> 
-              <div>hi</div>
-          </GridItem> */}
-
+        )
+      })}
+          
 
         </Grid>
       </div>
