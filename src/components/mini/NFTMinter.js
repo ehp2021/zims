@@ -12,10 +12,9 @@ const NFTMinter = () => {
     const mintNFT = as
 
 
-    return ( < div >
-
-        <
-        /div>
+    return ( <div>
+<h1></h1>
+        </div>
     )
 }
 

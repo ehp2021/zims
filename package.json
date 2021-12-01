@@ -31,6 +31,7 @@
         "react-moralis": "^0.3.0",
         "react-router-dom": "^6.0.2",
         "react-scripts": "4.0.3",
+        "truffle": "^5.4.22",
         "web-vitals": "^1.1.2"
     },
     "scripts": {
@@ -56,5 +57,21 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
-    }
+    },
+    "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+    "main": "truffle-config.js",
+    "directories": {
+        "test": "test"
+    },
+    "devDependencies": {},
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ehp2021/zims.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/ehp2021/zims/issues"
+    },
+    "homepage": "https://github.com/ehp2021/zims#readme"
 }

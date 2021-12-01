@@ -14,7 +14,7 @@ const Sidebar = () => {
 
   useEffect(() => {
     refetchUserData();
-    console.log(data, "data line 14")
+    // console.log(data, "data line 14")
   }, [isLoading]);
 
   return (

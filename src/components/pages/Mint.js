@@ -13,18 +13,19 @@ import './Mint.css';
 import Sidebar from '../mini/Sidebar';
 import axios from 'axios';
 import {useState,useEffect} from 'react'
+import{useMoralis} from 'react-moralis'
 
 
 const Mint = () => {
   const [NFTs,setNFTs]=useState([]);
-  const [NFTsFetched,setNFTsFetched] = useState(false)
+  const [NFTsFetched,setNFTsFetched] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(true);
+  const { user, web3 } = useMoralis();
 
-
-
+  
   async function getAll () {
     const result = await axios.get('https://zims-nft-api.herokuapp.com/')
     setNFTs(result.data);
-    console.log(result.data, "Working???????");
     setNFTsFetched(true);
   }
 
@@ -32,7 +33,57 @@ const Mint = () => {
     getAll() 
   },[])
 
+  // console.log(NFTs ? NFTs.data.price : "price")
+  function disableButton(price) {
+    if (price !== null) {
+      console.log(price,user.attributes.points, "line 39")
+      setIsDisabled(false)
+      return parseFloat(price) > user.attributes.points 
+    } else {
+      return true;
+    }
+  }
+  
+  const clickHandler =(id)=>{
+    console.log(id)
+  }
 
+  const mint = (title, photo) => {
+    const metadata = {title: title}
+    const metadataURI = saveFile(photo, file, {
+      type: 'image/jpeg',
+      metadata,
+      saveIPFS: true,
+    });
+   mintNFT(metadataURI);
+  }
+
+  const mintNFT = async _uri => {
+    const encodedFunction = web3.eth.abi.encodeFunctionCall(
+      {
+        name: 'mintToken',
+        type: 'function',
+        inputs: [
+          {
+            type: 'string',
+            name: 'tokenURI',
+          },
+        ],
+      },
+      [_uri]
+    );
+    const transactionParameters = {
+      to: user.attributes.ethAdress, //uset adress
+      from: ethereum.selectedAddress, // contract adress
+      data: encodedFunction,
+    };
+    const txt = await ethereum.request({
+      method: 'eth_sendTransaction',
+      params: [transactionParameters],
+    });
+    console.log(txt)
+    return txt;
+  };
 
   return ( 
     <div className='mint-container'>
@@ -43,7 +94,7 @@ const Mint = () => {
           templateColumns='repeat(5, 1fr)'
           gap={4}
           // padding={'20px'}
-          background={'radial-gradient(600px at 50% 50% , #fff 20%, #000 100%)'}
+          // background={'}
         >
 
           {/* ROW 1 */}
@@ -58,7 +109,7 @@ const Mint = () => {
 
 {/* ROW 2 */}
       {/* ROW 2, item 1 */}
-      {NFTsFetched && NFTs.map(nft=>{
+      {NFTsFetched && NFTs.sort((a,b)=>parseInt(a.price)-parseInt(b.price)).map(nft=>{
         return(
           <GridItem rowSpan={1} colSpan={1} bg='none' borderRadius={'30px'}> 
             <Center>
@@ -115,7 +166,7 @@ const Mint = () => {
                   </Heading>
                   <Stack direction={'row'} align={'center'}>
                     <Text fontWeight={600} fontSize={'xl'}>
-                      {`${nft.price} Points`}
+                      {`${parseFloat(nft.price).toLocaleString('en-US')} Points`}
                     </Text>
                   </Stack>
                   <Stack>
@@ -124,6 +175,8 @@ const Mint = () => {
                       w='100%'
                       colorScheme='teal'
                       color='white'
+                      isDisabled={parseFloat(nft.price) > user.attributes.points}
+                      onClick={()=> mint(nft.title, nft.photo)}
                     >Mint</Button>
                   </Stack>
                 </Stack>
