@@ -1,18 +1,21 @@
 import React, { useEffect } from 'react';
-import { useMoralis,useMoralisQuery } from 'react-moralis';
+import { useMoralis } from 'react-moralis';
 import { Link } from 'react-router-dom';
 import { Container, Flex, Text, Box, Heading, Button } from '@chakra-ui/react';
 import moment from 'moment';
+import { useMoralisCloudFunction } from 'react-moralis';
 
 const Sidebar = () => {
   const { user, refetchUserData } = useMoralis();
-  const { data, error, isLoading } = useMoralisQuery('User');
-  console.log(user, "DATA line 10");
+  const { data,isLoading } = useMoralisCloudFunction('getUsers');
+  // console.log(data, isLoading, 'line 11')
+  // if(data!==undefined || data!==null) console.log(data.filter(user => (user.attributes.user.id === data.id)), "line 12 filter")
+  // const userData = data.find(user.attributes.id)
 
   useEffect(() => {
     refetchUserData();
     console.log(data, "data line 14")
-  }, [user]);
+  }, [isLoading]);
 
   return (
     <Container
@@ -53,11 +56,11 @@ const Sidebar = () => {
         </Box>
         <Box my={2}>
           <Heading size='md'>Points:</Heading>
-          {/* <Text>{user !== null ? user.attributes.points.toLocaleString('en-US') : 0}</Text> */}
+          <Text>{data!==null ? user.attributes.points.toLocaleString('en-US') : 0}</Text>
         </Box>
         <Box my={2}>
           <Heading size='md'>Member Since:</Heading>
-          {/* <Text>{user !== null ? moment(user.attributes.createdAt.toString()).format('MM/DD/YYYY') : Date.now()}</Text> */}
+          <Text>{data!==null ? moment(user.attributes.createdAt.toString()).format('MM/DD/YYYY') : moment(Date.now()).format('MM/DD/YYYY')}</Text>
         </Box>
         <Link to='/mint'>
           <Button

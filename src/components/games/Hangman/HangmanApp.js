@@ -56,7 +56,7 @@ const words = ['application', 'programming', 'interface', 'wizard','luxury','tra
   "syndicators",
   "belted",
   "thunderbolt",
-  "kirk",
+  "kyle",
   "lekythoi",
   "septal",
   "melts",
