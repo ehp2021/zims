@@ -1,4 +1,5 @@
 import HangmanApp from '../games/Hangman/HangmanApp';
+import FloppyApp from '../games/Floppy/FloppyApp';
 import Sidebar from '../mini/Sidebar';
 import { Flex } from '@chakra-ui/react';
 import './Games.css'
@@ -20,7 +21,9 @@ const Games = () => {
                 <Link to='/hangman'>
                   <div className="hangman-title">Hangman</div>
                 </Link>
+                <Link to='/floppy'>
                 <div className="hangman-title">Floppy Bird</div>
+                </Link>
                 <div className="hangman-title">Brick Breaker</div>
               </div>
           </div>

@@ -9,6 +9,7 @@ import Navbar from './mini/Navbar';
 import Mint from './pages/Mint';
 import Games from './pages/Games'
 import HangmanApp from './games/Hangman/HangmanApp';
+import FloppyApp from './games/Floppy/FloppyApp';
 
 const App = () => {
   const { isAuthenticated } = useMoralis();
@@ -38,6 +39,10 @@ const App = () => {
           <Route
             path='/hangman'
             element={isAuthenticated ? <HangmanApp /> : <Navigate to='/' />}
+          />
+          <Route
+            path='/floppy'
+            element={isAuthenticated && <FloppyApp />}
           />
         </Routes>
       </Router>
