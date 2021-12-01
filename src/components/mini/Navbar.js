@@ -43,7 +43,7 @@ const Navbar = () => {
   };
 
   return (
-    <Box zIndex={'5'}>
+    <Box zIndex={'999'}>
       <Flex
         as='header'
         position='fixed'
