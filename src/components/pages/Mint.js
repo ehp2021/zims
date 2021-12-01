@@ -14,27 +14,6 @@ import Sidebar from '../mini/Sidebar';
 import axios from 'axios';
 import {useState,useEffect} from 'react'
 
-//ROW 2
-//castle
-const IMAGE0 ='https://images.pexels.com/photos/2832085/pexels-photo-2832085.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260';
-//yacht 
-const IMAGE ='https://images.pexels.com/photos/42091/pexels-photo-42091.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260';
-//ferrari
-const IMAGE2 ='https://images.pexels.com/photos/5126057/pexels-photo-5126057.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260';
-// aston martin
-const IMAGE3 ='https://images.pexels.com/photos/7287363/pexels-photo-7287363.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260';
-
-//ROW 3
-// house
-const IMAGE4 ='https://images.pexels.com/photos/1396132/pexels-photo-1396132.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260';
-// car
-const IMAGE5 ='https://images.pexels.com/photos/5085643/pexels-photo-5085643.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260';
-// motorcycle
-const IMAGE6 ='https://images.pexels.com/photos/2798288/pexels-photo-2798288.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260';
-// dog
-const IMAGE7 ='https://images.pexels.com/photos/933498/pexels-photo-933498.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2';
-
-
 
 const Mint = () => {
   const [NFTs,setNFTs]=useState([]);

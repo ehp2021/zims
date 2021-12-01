@@ -69,7 +69,7 @@ const Sidebar = () => {
             colorScheme='teal'
             color='white'
             padding={'20px'}
-          >Mint</Button>
+          >Mint NFTs</Button>
         </Link>
       </Flex>
     </Container>
