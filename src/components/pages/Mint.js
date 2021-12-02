@@ -13,14 +13,21 @@ import './Mint.css';
 import Sidebar from '../mini/Sidebar';
 import axios from 'axios';
 import {useState,useEffect} from 'react'
-import{useMoralis} from 'react-moralis'
+import{useMoralis, useMoralisFile, useWeb3Transfer} from 'react-moralis'
+
 
 
 const Mint = () => {
   const [NFTs,setNFTs]=useState([]);
   const [NFTsFetched,setNFTsFetched] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
-  const { user, web3 } = useMoralis();
+  const { user, web3, Moralis } = useMoralis();
+  const {
+    error,
+    isUploading,
+    moralisFile,
+    saveFile,
+  } = useMoralisFile();
 
   
   async function getAll () {
@@ -50,7 +57,7 @@ const Mint = () => {
 
   const mint = (title, photo) => {
     const metadata = {title: title}
-    const metadataURI = saveFile(photo, file, {
+    const metadataURI = saveFile(photo, {
       type: 'image/jpeg',
       metadata,
       saveIPFS: true,
@@ -72,17 +79,29 @@ const Mint = () => {
       },
       [_uri]
     );
-    const transactionParameters = {
-      to: user.attributes.ethAdress, //uset adress
-      from: ethereum.selectedAddress, // contract adress
-      data: encodedFunction,
-    };
-    const txt = await ethereum.request({
-      method: 'eth_sendTransaction',
-      params: [transactionParameters],
-    });
-    console.log(txt)
-    return txt;
+
+    const Transfer = () => {
+      const {fetch, error, isFetching} = useWeb3Transfer({
+        amount: 1,
+        receiver: user.attributes.ethAddress,
+        type: "erc721",
+        contractAddress: "0xa31426c301D34A7f3Bd70009969E721e0be074a3",
+      });
+    }
+
+    // const transactionParameters = {
+    //   to: user.attributes.ethAddress, //uset adress
+    //   from: '0xa31426c301D34A7f3Bd70009969E721e0be074a3', // contract adress
+    //   data: encodedFunction,
+    // };
+
+
+    // const txt = await ethereum.request({
+    //   method: 'eth_sendTransaction',
+    //   params: [transactionParameters],
+    // });
+    // console.log(txt)
+    return Transfer;
   };
 
   return ( 
@@ -176,6 +195,7 @@ const Mint = () => {
                       colorScheme='teal'
                       color='white'
                       isDisabled={parseFloat(nft.price) > user.attributes.points}
+                      // onClick={()=> console.log(nft.title, nft.photo)}
                       onClick={()=> mint(nft.title, nft.photo)}
                     >Mint</Button>
                   </Stack>
