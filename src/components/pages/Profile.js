@@ -29,6 +29,9 @@ import {
 const Profile = () => {
   const { user, setUserData, Moralis } = useMoralis();
   const { data, error, isLoading } = useMoralisQuery('Timestamp');
+  // const { data, error, isLoading } = useMoralisQuery("UserNFT")
+
+  
 
   return (
     <div className='Profile-container'>
