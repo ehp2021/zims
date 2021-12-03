@@ -58,7 +58,7 @@ console.log(data);
               NFTs Owned
             </div>
 
-            <Center py={12}>
+            <Center py={12} className='nft-box'>
               <NftsBox />
             </Center>
           </GridItem>

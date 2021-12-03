@@ -1,42 +1,59 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-.grid-container {
-    display: flex;
-    /* align-items: center;
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        .grid-container {
+            display: flex;
+            /* align-items: center;
     justify-content: center; */
-}
-
-.get-points-container {
-    font-family: 'Press Start 2P';
-    font-size: 15px;
-    color: white;
-}
-
-.nfts-container {
-    font-family: 'Press Start 2P';
-    font-size: 15px;
-    color: white;
-}
-
-.button-id {
-    font-family: 'Press Start 2P';
-    box-shadow: 0 1px 7px 0 rgb(136, 136, 136);
-    background: #4FD1C5;
-    background: linear-gradient(90deg, rgba(129, 230, 217, 1) 0%, rgba(79, 209, 197, 1) 100%);
-    border: none;
-    border-radius: 1200px;
-    box-shadow: 12px 12px 24px rgba(79, 209, 197, .64);
-    transition: all 0.3s ease-in-out 0s;
-    cursor: pointer;
-    outline: none;
-    position: relative;
-    padding: 15px;
-    margin-bottom: 10px;
-    text-align: center;
-    aspect-ratio: 2/1;
-}
-
-
-/* .button-id::before {
+        }
+        
+        .get-points-container {
+            font-family: 'Press Start 2P';
+            font-size: 15px;
+            color: white;
+        }
+        
+        .nfts-container {
+            font-family: 'Press Start 2P';
+            font-size: 15px;
+            color: white;
+        }
+        
+        .button-id {
+            font-family: 'Press Start 2P';
+            box-shadow: 0 1px 7px 0 rgb(136, 136, 136);
+            background: #4FD1C5;
+            background: linear-gradient(90deg, rgba(129, 230, 217, 1) 0%, rgba(79, 209, 197, 1) 100%);
+            border: none;
+            border-radius: 1200px;
+            box-shadow: 12px 12px 24px rgba(79, 209, 197, .64);
+            transition: all 0.3s ease-in-out 0s;
+            cursor: pointer;
+            outline: none;
+            position: relative;
+            padding: 15px;
+            margin-bottom: 10px;
+            text-align: center;
+            aspect-ratio: 2/1;
+        }
+        
+        .nft-box {
+            overflow-x: scroll;
+            padding: 3rem;
+            /* margin-left: 20px; */
+        }
+        
+        .nft-box::-webkit-scrollbar {
+            /* margin-bottom: 50px; */
+            /* -webkit-border-radius: 40px; */
+            background-color: none;
+            height: 7px;
+            transform: translateY(-10px);
+        }
+        
+        .nft-box::-webkit-scrollbar-thumb {
+            background-color: #4FD1C5;
+            border-radius: 100px;
+        }
+        /* .button-id::before {
     border-radius: 1200px;
     min-width: calc(300px+12px);
     min-height: calc(60px+12px);
@@ -49,9 +66,7 @@
     opacity: 0;
     transition: all .3s ease-in-out 0s;
 } */
-
-
-/* .button-id:hover,
+        /* .button-id:hover,
 .button-id:focus {
     color: #313133;
     transform: translateY(-6px);
@@ -61,9 +76,7 @@
 .button-id:focus::before {
     opacity: 1;
 } */
-
-
-/* .button-id::after {
+        /* .button-id::after {
     width: 30px;
     height: 30px;
     border-radius: 100%;
@@ -74,26 +87,22 @@
     left: 50%;
     transform: translate(-50%, -50%);
 } */
-
-
-/* .button-id:hover::after,
+        /* .button-id:hover::after,
 .button-id:focus::after {
     animation: none;
     display: none;
 } */
-
-.points-summary-container {
-    font-family: 'Press Start 2P';
-    font-size: 15px;
-    color: white;
-}
-
-.fa-briefcase {
-    color: white
-}
-
-
-/* .button-id::before {
+        
+        .points-summary-container {
+            font-family: 'Press Start 2P';
+            font-size: 15px;
+            color: white;
+        }
+        
+        .fa-briefcase {
+            color: white
+        }
+        /* .button-id::before {
     border-radius: 1200px;
     min-width: calc(300px+12px);
     min-height: calc(60px+12px);
@@ -117,9 +126,7 @@
 .button-id:focus::before {
     opacity: 1;
 } */
-
-
-/* .button-id::after {
+        /* .button-id::after {
     width: 30px;
     height: 30px;
     border-radius: 100%;
@@ -130,21 +137,17 @@
     left: 50%;
     transform: translate(-50%, -50%);
 } */
-
-
-/* .button-id:hover::after,
+        /* .button-id:hover::after,
 .button-id:focus::after {
     animation: none;
     display: none;
 } */
-
-
-/* .points-summary-container {
+        /* .points-summary-container {
     font-family: 'Press Start 2P';
     font-size: 15px;
     color: white;
 } */
-
-.fa-briefcase {
-    color: white
-}
+        
+        .fa-briefcase {
+            color: white
+        }
