@@ -40,29 +40,24 @@ const Mint = () => {
 
     const [newPoints, setNewPoints] = useState(user.attributes.points)
 
+    const MintedNFTs = Moralis.Object.extend('mintedNFTs');
+    const minted = new MintedNFTs();
+
+    async function ItemNFT(nft){
+      minted.set('photo',nft.photo)
+      minted.set('title',nft.title)
+      minted.set('initialPrice',nft.price)
+      minted.set('category',nft.category)
+      minted.set('user',user)
+      minted.set('username',user.attributes.username)
+      await minted.save()
+    }
+
     async function getAll() {
         const resultAPI = await axios.get('https://zims-nft-api.herokuapp.com/');
         setNFTs(resultAPI.data);
         setNFTsFetched(true);
     }
-
-    // const loadWeb3 = async() => {
-    //     if (window.ethereum) {
-    //         window.web3 = new Web3(window.ethereum);
-    //         await window.ethereum.enable();
-    //     } else if (window.web3) {
-    //         window.web3 = new Web3(window.web3.currentProvider);
-    //     } else {
-    //         window.alert(
-    //             'Non-ethereum browswer detected. You should consider trying Metamask!'
-    //         );
-    //     }
-    // };
-
-    // async function loadBlockchainData() {
-    //     setContract(new window.web3.eth.Contract(newAbi, contractAddress));
-    //     setAddress(user.attributes.ethAddress);
-    // }
 
 
     useEffect(() => {
@@ -136,7 +131,9 @@ const Mint = () => {
 
         const nftPoints = nft.price;
         console.log(newPoints-parseInt(nftPoints),'Line 121')
+        ItemNFT(nft);
         setNewPoints(prev=>prev-parseInt(nftPoints))
+        alert(`You have minted ${nft.title}`)
     };
 
     // console.log(ABI);
