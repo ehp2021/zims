@@ -19,8 +19,10 @@ export default function AllBroken(bricks, player, canvas, ballObj) {
         player.lives = 2;
         player.level = 1;
         player.score = 100;
-        //ballObj.speed = 15
+        //
         ResetBall(ballObj, canvas, paddleProps);
+        ballObj.speed = 15
         brickObj.y = 50;
+
     }
 }

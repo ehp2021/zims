@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import Buttons from './Buttons';
-import { Center, Text, HStack, VStack } from '@chakra-ui/react';
+import { Center, Text, Stack, HStack, VStack, Flex } from '@chakra-ui/react';
 import { useMoralis, useMoralisQuery } from 'react-moralis';
 import { useSelector, useDispatch } from 'react-redux';
 import { enable, disable } from '../../redux/buttons/buttons';
@@ -12,6 +12,8 @@ const Actions = () => {
   const timeStamp = new Timestamp();
   const { data, error, isLoading } = useMoralisQuery('Timestamp');
   const [points, setPoints] = useState(user.attributes.points);
+
+  // Buttons state
   const work = useSelector(state => state.button.work);
   const workout = useSelector(state => state.button.workout);
   const meditate = useSelector(state => state.button.meditate);
@@ -56,12 +58,11 @@ const Actions = () => {
 
   return (
     <>
-      <Text className='zimFont' p={'20px'} mb={7}>
-        Actions to Get Points
-      </Text>
-      <Center>
-        <HStack justify='center' align='center' spacing={8}>
-          <VStack direction='column' spacing={6}>
+          <Center>
+        {/* <Flex direction={{base: 'column', md:'row'}} justify='space-around'> */}
+        <Stack justify='center' align='center' spacing={8}>
+
+          <VStack align='center' direction='column' spacing={4}>
             <Buttons
               name='work'
               id='work'
@@ -91,7 +92,7 @@ const Actions = () => {
               isDisabled={meditate}
             />
           </VStack>
-          <VStack direction='column' spacing={6}>
+          <VStack direction='column' spacing={4} >
             <Buttons
               name='volunteer'
               id='volunteer'
@@ -120,65 +121,11 @@ const Actions = () => {
               isDisabled={shower}
             />
           </VStack>
-        </HStack>
+        </Stack>
       </Center>
+
     </>
   );
 };
 
 export default Actions;
-
-// dispatch(toggleButton('work'));
-// dispatch(toggleButton('workout'));
-// dispatch(toggleButton('party'));
-// dispatch(toggleButton('volunteer'));
-// dispatch(toggleButton('meditate'));
-// dispatch(toggleButton('shower'));
-
-// timeStamp.set(`${type}`, Date.now());
-// timeStamp.set('user', user);
-// timeStamp.save();
-// const TIME_BUTTON_WAS_CLICKED = data
-// .filter(data => data.attributes.user.id === user.id)
-// .find(data => data.attributes.work)?.createdAt;
-// var a = moment(TIME_BUTTON_WAS_CLICKED);
-// var b = moment(Date.now());
-
-// const TIME_BUTTON_WAS_CLICKED = data
-//   .filter(data => data.attributes.user.id === user.id)
-//   .find(data => data.attributes.work)?.createdAt;
-// var a = moment(TIME_BUTTON_WAS_CLICKED);
-// var b = moment(Date.now());
-// const diff = moment(Date.now()).diff(moment(TIME_BUTTON_WAS_CLICKED), 'minutes');
-
-// const enableButton = (type, timeLimit) => {
-//   while (
-//     TIME_BUTTON_WAS_CLICKED != undefined &&
-//     moment(Date.now()).diff(moment(TIME_BUTTON_WAS_CLICKED), 'minutes') >= timeLimit
-//   ) {
-//     dispatch(toggleButton(`${type}`));
-//     console.log('toggle button was called')
-//   }
-// };
-
-//console.log(diff);
-// setInterval(() => {
-//   enableButton('work', 1);
-// }, 10000);
-
-// const handleClickTime = e => {
-//   const currentDate = new Date().getTime();
-//   const storageId = 'lastClicked' + e.target.id;
-//   if (!localStorage.getItem(storageId)) {
-//     localStorage.setItem(storageId, currentDate);
-//     console.log('I can be clicked');
-//   } else {
-//     const previousClicked = parseInt(localStorage.getItem(storageId));
-//     if (currentDate > previousClicked + 500000) {
-//       console.log('Clicked Again!', storageId);
-//       localStorage.setItem(storageId, currentDate);
-//     } else {
-//       alert('You cannot click me!');
-//     }
-//   }
-// };
