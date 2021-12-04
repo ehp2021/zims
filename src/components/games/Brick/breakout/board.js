@@ -9,25 +9,32 @@ import PaddleHit from "./util/PaddleHit";
 import PlayerStats from "./PlayerStats";
 import AllBroken from "./util/AllBroken";
 import ResetBall from "./util/ResetBall";
+import{useNavigate} from 'react-router-dom'
 
 let { ballObj, paddleProps, brickObj, player } = data;
 
 let bricks = [];
 
+
+
+
+
 export default function Board() {
+
     const canvasRef = useRef(null);
-  
+    const NavigateBrick = useNavigate();
+
     useEffect(() => {
-      const render = () => {
-        const canvas = canvasRef.current;
-        if (canvas === null) return null;
-        const ctx = canvas.getContext("2d");
-  
-        paddleProps.y = canvas.height - 30;
-  
-        // asign bricks
-  
-        let newBrickSet = Brick(2, bricks, canvas, brickObj);
+        const render = () => {
+            const canvas = canvasRef.current;
+            if (canvas === null) return null;
+            const ctx = canvas.getContext("2d");
+
+            paddleProps.y = canvas.height - 30;
+
+            // asign bricks
+
+            let newBrickSet = Brick(2, bricks, canvas, brickObj);
 
             if (newBrickSet && newBrickSet.length > 0) {
                 bricks = newBrickSet;
@@ -39,11 +46,15 @@ export default function Board() {
 
             //if games is complete
 
-           
+
             if (player.lives === 0) {
                 alert("Game Over");
-                window.location.href = "http://localhost:3000/games";
-              }
+            
+                //window.location.href = "/games";
+           NavigateBrick('/games')
+           //window.location.reload(true)
+           window.location.replace('/games')
+            }
 
             bricks.map((brick) => {
                 return brick.draw(ctx);
@@ -83,8 +94,9 @@ export default function Board() {
         render();
     }, []);
 
-    return ( < div classname = "brick-container" >
-        <canvas id = "canvas"
+    return ( 
+    <div classname = "brick-container">
+        < canvas id = "canvas"
         ref = { canvasRef }
         onMouseMove = {
             (event) =>
@@ -92,6 +104,7 @@ export default function Board() {
         }
         height = "500px"
         width = { window.innerWidth - 220 }
-        />  </div>
+        />  
+    </div>
     );
 }

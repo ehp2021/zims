@@ -14,11 +14,12 @@ export default function AllBroken(bricks, player, canvas, ballObj) {
         }
     }
     if (total === bricks.length) {
-        alert("Game Complete");
+        alert("Moving to Next Level!");
         bricks.length = 0;
         player.lives = 2;
         player.level = 1;
-        player.score = 0;
+        player.score = 100;
+        //ballObj.speed = 15
         ResetBall(ballObj, canvas, paddleProps);
         brickObj.y = 50;
     }

@@ -11,7 +11,7 @@ import Games from './pages/Games'
 import HangmanApp from './games/Hangman/HangmanApp';
 import FloppyApp from './games/Floppy/FloppyApp';
 import BrickApp from './games/Brick/breakout/index';
-import Tetris from './games/Tetris/Stepped Solutions/react-tetris - FINISHED/src/components/Tetris'
+import Tetris from './games/Tetris/Tetris'
 
 const App = () => {
         const { isAuthenticated } = useMoralis();

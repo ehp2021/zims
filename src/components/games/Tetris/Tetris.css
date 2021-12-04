@@ -1,0 +1,58 @@
+.game-block {
+    margin: 0;
+    padding: 0;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid rgba(210, 203, 203, 0.606);
+}
+
+.piece-i {
+    background-color: #33e1f4;
+}
+
+.piece-j {
+    background-color: rgb(17, 64, 251);
+}
+
+.piece-l {
+    background-color: rgb(247, 181, 12);
+}
+
+.piece-o {
+    background-color: #e0f404;
+}
+
+.piece-s {
+    background-color: rgb(2, 252, 81);
+}
+
+.piece-t {
+    background-color: rgb(175, 20, 242);
+}
+
+.piece-z {
+    background-color: #e32a27;
+}
+
+.piece-preview {
+    background-color: rgb(247, 247, 247);
+    opacity: 0.25;
+}
+
+.tetris-container {
+    display: flex;
+    flex-direction: row;
+    gap: 30px
+}
+
+.points {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+h1 {
+    font-weight: 1000;
+    font-size: 75px;
+}

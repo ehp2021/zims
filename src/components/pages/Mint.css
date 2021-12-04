@@ -4,12 +4,12 @@
         }
         
         .nft-title {
-            margin-top: 70px;
-            margin-bottom: 40px;
+            /* margin-top: 70px; */
+            /* margin-bottom: 40px; */
             text-align: center;
             font-family: 'Press Start 2P';
-            font-size: 60px;
-            transform: skewY(-10deg);
+            /* font-size: 60px; */
+            transform: skewY(-7deg);
             letter-spacing: 4px;
             word-spacing: -8px;
             color: rgb(95, 194, 184);

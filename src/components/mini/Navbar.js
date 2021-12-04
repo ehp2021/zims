@@ -1,9 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMoralis } from 'react-moralis';
-import { BsMoonFill, BsFillSunFill } from 'react-icons/bs';
-import './Navbar.css';
-
+import { BsMoonFill, BsFillSunFill, BsPersonFill, BsCaretDownFill } from 'react-icons/bs';
+import { HiLogout } from 'react-icons/hi';
+import { SiApplearcade } from 'react-icons/si';
+import { IoSettings } from 'react-icons/io5';
+import Sidebar from './Sidebar';
+import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import {
   Box,
   Flex,
@@ -11,30 +14,22 @@ import {
   IconButton,
   Button,
   Stack,
-  useColorMode,
   Collapse,
-  Icon,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
+  useColorMode,
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
+  Menu,
+  MenuList,
+  MenuButton,
+  MenuItem,
+  MenuDivider,
 } from '@chakra-ui/react';
-import {
-  HamburgerIcon,
-  CloseIcon,
-  ChevronDownIcon,
-  ChevronRightIcon,
-} from '@chakra-ui/icons';
 
 const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
-
-  const onToggle = () => {};
-  const isOpen = () => {};
-
-  const { isAuthenticated, logout } = useMoralis();
+  const { isOpen, onToggle, onClose } = useDisclosure();
+  const { logout } = useMoralis();
   const navigate = useNavigate();
 
   const Logout = () => {
@@ -42,26 +37,32 @@ const Navbar = () => {
     navigate('/');
   };
 
+  const onClick = destination => {
+    onClose();
+    navigate('/' + destination);
+  };
+
   return (
-    <Box zIndex={'999'}>
+    <Box>
       <Flex
+        zIndex='9999'
         as='header'
         position='fixed'
+        p={6}
+        h='60px'
         w='100%'
-        bg={useColorModeValue('white', 'gray.800')}
+        align='center'
+        justify='center'
+        bg={useColorModeValue('gray.300', 'gray.800')}
         color={useColorModeValue('gray.600', 'white')}
-        minH={'60px'}
-        py={{ base: 2 }}
-        px={{ base: 4 }}
         borderBottom={1}
         borderStyle={'solid'}
         borderColor={useColorModeValue('gray.200', 'gray.900')}
-        align={'center'}
       >
         <Flex
-          flex={{ base: 1, md: 'auto' }}
+          flex={{ base: 1, lg: 'auto' }}
           ml={{ base: -2 }}
-          display={{ base: 'flex', md: 'none' }}
+          display={{ base: 'flex', xl: 'none' }}
         >
           <IconButton
             onClick={onToggle}
@@ -70,47 +71,40 @@ const Navbar = () => {
             aria-label={'Toggle Navigation'}
           />
         </Flex>
-        <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
+        <Flex flex={{ base: 1 }} justify={{ base: 'center', lg: 'start' }}>
           <Text
-            textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
             color={useColorModeValue('gray.800', 'white')}
+            cursor={'pointer'}
             onClick={() => {
               navigate('/');
             }}
-            cursor={'pointer'}
           >
-            <div className='zims-logo'>ZIMS</div>
+            <Text
+              className='zimFont'
+              fontSize='30px'
+              color={useColorModeValue('orange.500', 'gold')}
+            >
+              ZIMS
+            </Text>
           </Text>
-          <Text
-            textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
+          <Flex
             fontFamily={'heading'}
+            textAlign={['center', 'left']}
             color={useColorModeValue('gray.800', 'white')}
-            ml={6}
-            cursor={'pointer'}
-            marginTop={'10px'}
-            onClick={() => {
-              navigate('/profile');
-            }}
+            display={{ base: 'none', xl: 'inline-flex' }}
+            cursor='pointer'
+            marginTop='10px'
           >
-            My Profile
-          </Text>{' '}
-
-          <Text
-            textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-            fontFamily={'heading'}
-            color={useColorModeValue('gray.800', 'white')}
-            ml={6}
-            cursor={'pointer'}
-            marginTop={'10px'}
-            onClick={() => {
-              navigate('/games');
-            }}
-          >
-            Arcade
-          </Text>{' '}
+            <Text ml={6} onClick={() => navigate('/profile')}>
+              My Profile
+            </Text>
+            <Text ml={6} onClick={() => navigate('/games')}>
+              Arcade
+            </Text>
+          </Flex>
         </Flex>
         <Stack
-          flex={{ base: 1, md: 0 }}
+          flex={{ base: 1, lg: 0 }}
           justify={'flex-end'}
           direction={'row'}
           spacing={6}
@@ -118,24 +112,50 @@ const Navbar = () => {
           <IconButton
             onClick={toggleColorMode}
             icon={colorMode === 'light' ? <BsFillSunFill /> : <BsMoonFill />}
+            display={{ base: 'none', xl: 'inline-flex' }}
             aria-label='Toggle color mode'
           ></IconButton>
           <Button
             onClick={Logout}
-            display={{ base: 'none', md: 'inline-flex' }}
+            display={{ base: 'none', xl: 'inline-flex' }}
             fontSize={'sm'}
             fontWeight={600}
-            color={'white'}
-            bg={'#4FD1C5'}
-            href={'#'}
-            _hover={{
-              bg: '#4FD1C5',
-            }}
+            color='gray.900'
+            bg='teal.300'
+            _hover={{ bg: 'teal.500' }}
           >
-            Logout{' '}
+            Logout
           </Button>
+
+          <Menu>
+            <MenuButton
+              display={{ base: 'inline-flex', xl: 'none' }}
+              as={IconButton}
+              aria-label='Options'
+              icon={<BsCaretDownFill />}
+              variant='ghost'
+            />
+            <MenuList>
+              <MenuItem icon={<BsPersonFill />} onClick={() => onClick('profile')}>
+                My Profile
+              </MenuItem>
+              <MenuItem icon={<SiApplearcade />} onClick={() => onClick('games')}>
+                Arcade
+              </MenuItem>
+              <MenuItem icon={<IoSettings />} onClick={() => onClick('settings')}>
+                Settings
+              </MenuItem>
+              <MenuDivider />
+              <MenuItem icon={<HiLogout />} onClick={Logout}>
+                Logout
+              </MenuItem>
+            </MenuList>
+          </Menu>
         </Stack>
       </Flex>
+      <Collapse in={isOpen} animateOpacity>
+        <Sidebar isMobile={true} />
+      </Collapse>
     </Box>
   );
 };

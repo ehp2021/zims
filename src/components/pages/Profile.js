@@ -25,69 +25,69 @@ import {
 } from '@chakra-ui/react';
 
 
-
 const Profile = () => {
   const { user, setUserData, Moralis } = useMoralis();
   const { data, error, isLoading } = useMoralisQuery('mintedNFTs');
-  // const { data, error, isLoading } = useMoralisQuery("UserNFT")
-// console.log(data);
-  
 
   return (
-    <div className='Profile-container'>
-      <div className='grid-container'>
+    <>
+      <Sidebar isMobile={false} />
+      <Flex >
+        <Flex
+          m='0 auto'
+          my='4rem'
+          w={{ base: 'none', xl: '75%' }}
+          mr={{ base: 'none', xl: '1rem'}}
+        >
+      <Flex direction='column' align='center' justify='center'>
         <Grid
           h='1000px'
           templateRows='repeat(2, 1fr)'
-          templateColumns='repeat(5, 1fr)'
+          templateColumns='repeat(2, 1fr)'
           gap={4}
+          m='2rem'
         >
-
-          <GridItem rowSpan={2} colSpan={1} bg='gray'>
-            <Sidebar />
-          </GridItem>
-
           <GridItem
-            marginTop={'90px'}
-            colSpan={4}
-            marginRight={'20px'}
-            borderRadius={'30px'}
+            colSpan={{base: 2, lg: 4}}
+            borderRadius='30px'
             bg='gray'
+            p='1rem'
           >
-            <div className='nfts-container' style={{ padding: '20px' }}>
+            <Text className='zimFont' p='2rem' color='white'>
               NFTs Owned
-            </div>
-
+            </Text>
             <Center py={12} className='nft-box'>
               <NftsBox />
             </Center>
           </GridItem>
 
-  
-            <GridItem marginTop={'20px'} borderRadius={'30px'} colSpan={2} bg='gray' >
-            <Actions />
+            <GridItem
+             colSpan={2} 
+             my='1.5rem' 
+             borderRadius='30px' 
+             bg='gray' >
+                     <Actions />
             </GridItem>
-        
 
-          {/* POINTS SUMMARY */}
           <GridItem
-            marginTop={'20px'}
-            marginRight={'20px'}
-            borderRadius={'30px'}
             colSpan={2}
+            my='1.5rem'
+            borderRadius='30px'
             bg='gray'
           >
-            <div className='points-summary-container' style={{ padding: '20px' }}>
-              Points Summary
-            </div>
+            <Text className='zimFont' p='2rem' color='white'>
+              Points Sumamary
+            </Text>
             <Center>
-              <PointsSummary />	
+                   <PointsSummary />	
             </Center>
 
           </GridItem>
         </Grid>
-      </div>
-    </div>
+    </Flex>
+    </Flex>
+    </Flex>
+    </>
   );
 };
 

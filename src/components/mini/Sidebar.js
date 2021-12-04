@@ -1,20 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useNavigate } from 'react';
 import { useMoralis } from 'react-moralis';
 import { Link } from 'react-router-dom';
-import { Container, Flex, Text, Box, Heading, Button } from '@chakra-ui/react';
+import {
+  Container,
+  Flex,
+  Text,
+  Box,
+  Heading,
+  Button,
+} from '@chakra-ui/react';
 import moment from 'moment';
 import { useMoralisCloudFunction } from 'react-moralis';
 
-const Sidebar = () => {
+const Sidebar = ({ isMobile }) => {
   const { user, refetchUserData } = useMoralis();
-  const { data,isLoading } = useMoralisCloudFunction('getUsers');
-  // console.log(data, isLoading, 'line 11')
-  // if(data!==undefined || data!==null) console.log(data.filter(user => (user.attributes.user.id === data.id)), "line 12 filter")
-  // const userData = data.find(user.attributes.id)
+  const { data, isLoading } = useMoralisCloudFunction('getUsers');
 
   useEffect(() => {
     refetchUserData();
-    // console.log(data, "data line 14")
   }, [isLoading]);
 
   return (
@@ -23,10 +26,12 @@ const Sidebar = () => {
       pt='5rem'
       bg='gray'
       color='white'
-      // pos='fixed'
-      // zIndex='-1'
+      pos='fixed'
+      zIndex='20'
       h='100%'
-      w='20rem'
+      w={{ base: '100%', md: '15%', xl: '20%' }}
+      minW='20rem'
+      display={isMobile ? { base: 'block', xl: 'none' } : { base: 'none', xl: 'block' }}
     >
       <Flex
         direction='column'
@@ -44,23 +49,34 @@ const Sidebar = () => {
             width: '150px',
             borderRadius: '100px',
             marginBottom: '7px',
+            boxShadow: '0 0 10px .5px black',
           }}
         />
-        <Link to='/settings'>
-          <Text className='link'>Edit Profile</Text>
-        </Link>
-        <Box my={2}>
+        {!isMobile && (
+          <>
+            <Link to='/settings'>
+              <Text className='link'>Edit Profile</Text>
+            </Link>
+          </>
+        )}
+        <Box my={4}>
           <Text className='zimFont' size='md'>
             {user.attributes.username || 'ZIMUSER'}
           </Text>
         </Box>
         <Box my={2}>
           <Heading size='md'>Points:</Heading>
-          <Text>{data!==null ? user.attributes.points.toLocaleString('en-US') : 0}</Text>
+          <Text>
+            {data !== null ? user.attributes.points.toLocaleString('en-US') : 0}
+          </Text>
         </Box>
         <Box my={2}>
           <Heading size='md'>Member Since:</Heading>
-          <Text>{data!==null ? moment(user.attributes.createdAt.toString()).format('MM/DD/YYYY') : moment(Date.now()).format('MM/DD/YYYY')}</Text>
+          <Text>
+            {data !== null
+              ? moment(user.attributes.createdAt.toString()).format('MM/DD/YYYY')
+              : moment(Date.now()).format('MM/DD/YYYY')}
+          </Text>
         </Box>
         <Link to='/mint'>
           <Button
@@ -68,8 +84,10 @@ const Sidebar = () => {
             w='100%'
             colorScheme='teal'
             color='white'
-            padding={'20px'}
-          >Mint NFTs</Button>
+            padding='20px'
+          >
+            Mint NFTs
+          </Button>
         </Link>
       </Flex>
     </Container>
