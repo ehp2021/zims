@@ -30,7 +30,7 @@ const Profile = () => {
   const { user, setUserData, Moralis } = useMoralis();
   const { data, error, isLoading } = useMoralisQuery('mintedNFTs');
   // const { data, error, isLoading } = useMoralisQuery("UserNFT")
-console.log(data);
+// console.log(data);
   
 
   return (

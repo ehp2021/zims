@@ -6,59 +6,57 @@ import moment from 'moment'
 
 
 const PointsSummary = () => {
-    const { user, setUserData, Moralis, refetchUserData } = useMoralis();
-    const PointsSummary = Moralis.Object.extend('PointsSummary');
-    const pointsSummary = new PointsSummary();
-    const { data, error, isLoading } = useMoralisQuery("PointsSummary",query=>
-    query
-    .descending('createdAt')
-    .limit(10));
-    const [reload, setReload] = useState(true);
+        const { user, setUserData, Moralis, refetchUserData } = useMoralis();
+        const PointsSummary = Moralis.Object.extend('PointsSummary');
+        const pointsSummary = new PointsSummary();
+        const { data, error, isLoading } = useMoralisQuery("PointsSummary", query =>
+            query
+            .descending('createdAt')
+            .limit(20));
+        const [reload, setReload] = useState(true);
 
-		
-    useEffect(() => {
-        let interval = setInterval(() => {
-                setReload(state => !state)
-                    // console.log(user.attributes.points, "line 19")
-                pointsSummary.set('points', user.attributes.points)
-                pointsSummary.set('user', user)
-                pointsSummary.save()
 
-            }, (3600000)) // create new data every 60 min
-        return () => clearInterval(interval)
-    }, [])
+        useEffect(() => {
+            let interval = setInterval(() => {
+                    setReload(state => !state)
+                        // console.log(user.attributes.points, "line 19")
+                    pointsSummary.set('points', user.attributes.points)
+                    pointsSummary.set('user', user)
+                    pointsSummary.save()
 
-    useEffect(() => {
-        refetchUserData();
-        // console.log(data, "data line 14")
-      }, [isLoading]);
+                }, (3600000)) // create new data every 60 min
+            return () => clearInterval(interval)
+        }, [])
 
-    return ( 
-    <div className = "points-summary-container">
+        useEffect(() => {
+            refetchUserData();
+            console.log(data, "P line 14")
+        }, [isLoading]);
 
-        <Chart width = { 500 }
-        height = { '400px' }
-        chartType = "AreaChart"
-        loader = { 
-        <div> Loading Chart </div>}
-            data = {
-                [
-                    ['Time', 'Points'],
-                    ...data.filter(data => (data.attributes.user.id === user.id)).reverse().map((data) => [moment(data.attributes.updatedAt).format('MM/DD h:mm a'), data.attributes.points])
-                ]
-            }
-            options = {
-                {
-                    title: '',
-										legend: { position: 'top' },
-                    hAxis: { title: 'Timestamp', titleTextStyle: { color: '#4FD1C5' },slantedText: true,slantedTextAngle: 80 },
-                    vAxis: { title: 'Points', titleTextStyle: { color: '#4FD1C5' }, minValue: 100000 },
-                    chartArea: { width: '60%', height: '50%'}
+        return ( < div className = "points-summary-container" >
+            <Chart width = { 500 }
+            height = { '400px' }
+            chartType = "AreaChart"
+            loader = { < div > Loading Chart </div>}
+                data = {
+                    [
+                        ['Time', 'Points'],
+                        ...data.filter(data => (data.attributes.user.id === user.id))
+                        .reverse()
+                        .map((data) => [moment(data.attributes.updatedAt).format('MM/DD h:mm a'), data.attributes.points])
+                    ]
                 }
-            }
-            />
-                </div>
-        )
-    }
+                options = {
+                    {
+                        title: '',
+                        legend: { position: 'top' },
+                        hAxis: { title: 'Timestamp', titleTextStyle: { color: '#4FD1C5' }, slantedText: true, slantedTextAngle: 80 },
+                        vAxis: { title: 'Points', titleTextStyle: { color: '#4FD1C5' }, minValue: 100000 },
+                        chartArea: { width: '60%', height: '50%' }
+                    }
+                }
+                /> </div >
+            )
+        }
 
-    export default PointsSummary;
+        export default PointsSummary;

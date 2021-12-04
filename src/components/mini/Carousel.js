@@ -14,7 +14,7 @@ const Carousel = () => {
         <div>
           {data.map((user, i) => {
             return (
-              <div className='user-container' id={user.attributes.id}>
+              <div className='user-container' key={user.attributes.id}>
                 <div className='topUserRanking'>
                   <h1> {`#${i + 1}`} </h1>
                   <h4 style={{ color: 'white' }}>{user.attributes.username}</h4>

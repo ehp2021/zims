@@ -167,8 +167,7 @@ const Mint = () => {
             </GridItem> 
             
 {/* { / * ROW 2 * / }  */}
-          {
-            NFTsFetched &&
+        { NFTsFetched ?
             NFTs.sort((a, b) => parseInt(a.price) - parseInt(b.price)).map(nft => {
                 return ( <GridItem rowSpan = { 1 }
                     colSpan = { 1 }
@@ -256,7 +255,8 @@ const Mint = () => {
                     </Box > 
                     </Center> </GridItem >
                 );
-            })
+            }) 
+        : <div style={{padding: '20px'}}><h1>"Loading NFTs..."</h1></div>
         } 
         </Grid> 
         </div > 

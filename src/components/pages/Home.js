@@ -2,6 +2,7 @@ import Carousel from '../mini/Carousel';
 import Sidebar from '../mini/Sidebar';
 import { Flex } from '@chakra-ui/react';
 
+
 const Home = () => {
   return (
     <>
