@@ -1,22 +1,33 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import { Grid, GridItem } from '@chakra-ui/react';
 import Sidebar from '../mini/Sidebar';
 import { useMoralis, useMoralisQuery } from 'react-moralis';
-import './Profile.css';
+import { FaBeer } from 'react-icons/fa';
+import moment from 'moment';
+
 import 'font-awesome/css/font-awesome.min.css';
 import PointsSummary from '../mini/PointsSummary';
 import NftsBox from '../mini/NftsBox';
+import Buttons from '../mini/Buttons';
 import Actions from '../mini/Actions';
 
 import {
+  Box,
   Center,
+  useColorModeValue,
+  Heading,
   Text,
+  Stack,
+  Image,
   Flex,
-  Stack
+  HStack,
+  VStack,
 } from '@chakra-ui/react';
 
-
 const Profile = () => {
+  const { user, setUserData, Moralis } = useMoralis();
+  const { data, error, isLoading } = useMoralisQuery('Timestamp');
 
   return (
     <>
@@ -24,62 +35,49 @@ const Profile = () => {
       <Flex>
         <Flex
           m='0 auto'
-          my='4rem'
+          mt='4rem'
           w={{ base: 'none', xl: '75%' }}
-          mr={{ base: 'none', xl: '1rem'}}
+          mr={{ base: 'none', xl: '1rem' }}
         >
-      {/* <Stack direction={{base: 'column', lg: 'row'}} align='center' spacing={8}> */}
-      <Stack justify='center' align='center' spacing={8}>
-
-        <Grid
-          h='1000px'
-          templateRows='repeat(2, 1fr)'
-          templateColumns='repeat(2, 1fr)'
-          gap={4}
-          m='2rem'
-        >
-          <GridItem
-            colSpan={{base: 2, xl: 4}}
-            borderRadius='30px'
-            bg='gray'
-            p='1rem'
-          >
-            <Text className='zimFont' p='2rem' color='white'>
-              NFTs Owned
-            </Text>
-            <Center py={12} className='nft-box'>
-              <NftsBox />
-            </Center>
-          </GridItem>
-            <GridItem
-             colSpan={2}
-             my='1.5rem'
-             borderRadius='30px'
-             bg='gray' >
+          <Stack justify='center' align='center'>
+            <Grid
+              templateRows='repeat(2, .9fr)'
+              templateColumns='repeat(2, 1fr)'
+              gap={10}
+              m='2rem'
+            >
+              <GridItem colSpan={{ base: 2, lg: 4 }} borderRadius='30px' bg='gray'>
                 <Text className='zimFont' p='2rem' color='white'>
-             Actions to Get Pints
-            </Text>
-              <Flex justify='center' align='center'>
-                <Actions />
-                </Flex>
-            </GridItem>
-          <GridItem
-            colSpan={2}
-            my='1.5rem'
-            borderRadius='30px'
-            bg='gray'
-          >
-            <Text className='zimFont' p='2rem' color='white'>
-              Points Summary
-            </Text>
-            <Flex justify='center' align='center'>
-                 <PointsSummary />
-                 </Flex>
-          </GridItem>
-        </Grid>
-    </Stack>
-    </Flex>
-    </Flex>
+                  NFTs Owned
+                </Text>
+                <Center p='0 2rem 0 2rem'>
+                  <Flex overflowX='scroll' className='scrollBar'>
+                    <NftsBox />
+                  </Flex>
+                </Center>
+              </GridItem>
+
+              <GridItem colSpan={2} borderRadius='30px' bg='gray'>
+                <Text className='zimFont' p='2rem' color='white'>
+                  Actions to Get Pints
+                </Text>
+                <Center p='0 2rem 2rem 2rem'>
+                  <Actions />
+                </Center>
+              </GridItem>
+
+              <GridItem colSpan={2} borderRadius='30px' bg='gray'>
+                <Text className='zimFont' p='2rem' color='white'>
+                  Points Summary
+                </Text>
+                <Center p='0 2rem 2rem 2rem'>
+                  <PointsSummary />
+                </Center>
+              </GridItem>
+            </Grid>
+          </Stack>
+        </Flex>
+      </Flex>
     </>
   );
 };

@@ -10,6 +10,7 @@ import PlayerStats from "./PlayerStats";
 import AllBroken from "./util/AllBroken";
 import ResetBall from "./util/ResetBall";
 import{useNavigate} from 'react-router-dom'
+import {useMoralis} from 'react-moralis'
 
 let { ballObj, paddleProps, brickObj, player } = data;
 
@@ -20,7 +21,7 @@ let bricks = [];
 
 
 export default function Board() {
-
+    const {user,setUserData} = useMoralis()
     const canvasRef = useRef(null);
     const NavigateBrick = useNavigate();
 
@@ -49,7 +50,7 @@ export default function Board() {
 
             if (player.lives === 0) {
                 alert("Game Over");
-            
+            setUserData({points:(user.attributes.points+(player.score*2))})
                 //window.location.href = "/games";
            NavigateBrick('/games')
            //window.location.reload(true)

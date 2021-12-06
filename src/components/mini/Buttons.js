@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@chakra-ui/react';
+import Countdown from 'react-countdown';
 
-const Buttons = ({ id, name, points, time, icon, clickHandler, isDisabled }) => {
+const Buttons = ({ id, name, points, durationTime, icon, clickHandler, isDisabled }) => {
+  const previousClick = +localStorage.getItem('lastClicked' + name);
+  const [timeLeft, setTimeLeft] = useState(Date.now() - previousClick);
   return (
     <Button
       className='zimFont'
@@ -25,14 +28,20 @@ const Buttons = ({ id, name, points, time, icon, clickHandler, isDisabled }) => 
       disabled={isDisabled}
       style={{ pointerEvents: isDisabled && 'none' }}
     >
-      {name.toUpperCase()}
-      <i
-        className={icon}
-        style={{
-          marginLeft: '1rem',
-          marginBottom: '.1rem',
-        }}
-      ></i>
+      {!isDisabled ? (
+        <>
+          {name.toUpperCase()}
+          <i
+            className={icon}
+            style={{
+              marginLeft: '1rem',
+              marginBottom: '.1rem',
+            }}
+          ></i>
+        </>
+      ) : (
+        <Countdown date={Date.now() + timeLeft} />
+      )}
     </Button>
   );
 };

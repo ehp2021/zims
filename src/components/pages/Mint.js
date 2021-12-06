@@ -143,101 +143,105 @@ const Mint = () => {
 
   return (
     <>
-      <Sidebar isMobile={false} />
-      <Flex>
-        <Flex
-          m='0 auto'
-          w={{ base: 'none', xl: '70%' }}
-          mt='6rem'
-          mr={{ base: 'none', xl: '0', '2xl': '-8rem' }}
-        >
-          <Flex direction='column' align='center' justify='center' textAlign='center'>
-            <Text
-              className='nft-title'
-              fontSize={{ base: '2rem', sm: '3rem', md: '3.5rem' }}
-              mt={4}
-              mb='5rem'
-            >
-              Mint New NFTs
-            </Text>
-            <SimpleGrid columns={{ base: '1', sm: '2', md: '3' }} gap={4} 
-              >
-              {NFTsFetched &&
-                NFTs.sort((a, b) => parseInt(a.price) - parseInt(b.price)).map(nft => {
-                  return (
-                    <>
-                      <Box p={6} bg='gray.800' boxShadow='2xl' pos='relative' zIndex={1} >
-                        <Box
-                          mt={-12}
-                          pos='relative'
-                          height='180px'
-                          _after={{
-                            transition: 'all .3s ease',
-                            content: '""',
-                            w: 'full',
-                            h: 'full',
-                            pos: 'absolute',
-                            top: 5,
-                            left: 0,
-                            backgroundImage: `url(${nft.photo})`,
-                            filter: 'blur(15px)',
-                            zIndex: -1,
-                          }}
-                          _groupHover={{
-                            _after: {
-                              filter: 'blur(20px)',
-                            },
-                          }}
-                        >
-                          <Image
-                            height='200px'
-                            width='170px'
-                            objectFit={'contain'}
-                            src={nft.photo}
-                            m='0 auto'
-                            marginTop='2rem'
-                          />
-                        </Box>
-                        <Stack pt={10} align={'center'}>
-                          <Text
-                            color={'gray.500'}
-                            fontSize={'sm'}
-                            textTransform={'uppercase'}
-                          >
-                            NFT# {nft.id}
-                          </Text>
-                          <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
-                            {nft.title}
-                          </Heading>
-                          <Stack direction={'row'} align={'center'}>
-                            <Text fontWeight={600} fontSize={'xl'}>
-                              {`${parseFloat(nft.price).toLocaleString('en-US')} Points`}
-                            </Text>
-                          </Stack>
-                          <Stack>
-                            <Button
-                              my={4}
-                              w='100%'
-                              colorScheme='teal'
-                              color='white'
-                              isDisabled={parseFloat(nft.price) > user.attributes.points}
-                              onClick={() => {
-                                return MintNFT(nft);
-                              }}
-                            >
-                              Mint
-                            </Button>
-                          </Stack>
-                        </Stack>
+    <Sidebar isMobile={false} />
+    <Flex overflowX='hidden'>
+      <Flex
+        m='0 auto'
+        w={{ base: 'none', xl: '70%' }}
+        mt='6rem'
+        mr={{ base: 'none', xl: '0', '2xl': '-8rem' }}
+      >
+        <Flex direction='column' align='center' justify='center' textAlign='center'>
+          <Text
+            className='nft-title'
+            fontSize={{ base: '2rem', sm: '3rem', md: '3.5rem' }}
+          >
+            Mint New NFTs
+          </Text>
+          <SimpleGrid columns={{ base: '1', sm: '2', md: '3' }} gap={4}>
+            {NFTsFetched &&
+              NFTs.sort((a, b) => parseInt(a.price) - parseInt(b.price)).map(nft => {
+                return (
+                  <>
+                    <Box
+                      p={6}
+                      bg='gray.800'
+                      boxShadow='2xl'
+                      pos='relative'
+                      zIndex={1}
+                      rounded='lg'
+                    >
+                      <Box
+                        mt={-12}
+                        pos='relative'
+                        height='180px'
+                        _after={{
+                          transition: 'all .3s ease',
+                          content: '""',
+                          w: 'full',
+                          h: 'full',
+                          pos: 'absolute',
+                          top: 5,
+                          left: 0,
+                          backgroundImage: `url(${nft.photo})`,
+                          filter: 'blur(15px)',
+                          zIndex: -1,
+                        }}
+                        _groupHover={{
+                          _after: {
+                            filter: 'blur(20px)',
+                          },
+                        }}
+                      >
+                        <Image
+                          height='200px'
+                          width='170px'
+                          objectFit={'contain'}
+                          src={nft.photo}
+                          m='0 auto'
+                          marginTop='2rem'
+                        />
                       </Box>
-                    </>
-                  );
-                })}
-            </SimpleGrid>
-          </Flex>
+                      <Stack pt={10} align={'center'}>
+                        <Text
+                          color={'gray.500'}
+                          fontSize={'sm'}
+                          textTransform={'uppercase'}
+                        >
+                          NFT# {nft.id}
+                        </Text>
+                        <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
+                          {nft.title}
+                        </Heading>
+                        <Stack direction={'row'} align={'center'}>
+                          <Text fontWeight={600} fontSize={'xl'}>
+                            {`${parseFloat(nft.price).toLocaleString('en-US')} Points`}
+                          </Text>
+                        </Stack>
+                        <Stack>
+                          <Button
+                            my={4}
+                            w='100%'
+                            colorScheme='teal'
+                            color='white'
+                            isDisabled={parseFloat(nft.price) > user.attributes.points}
+                            onClick={() => {
+                              return MintNFT(nft);
+                            }}
+                          >
+                            Mint
+                          </Button>
+                        </Stack>
+                      </Stack>
+                    </Box>
+                  </>
+                );
+              })}
+          </SimpleGrid>
         </Flex>
       </Flex>
-    </>
+    </Flex>
+  </>
   );
 };
 

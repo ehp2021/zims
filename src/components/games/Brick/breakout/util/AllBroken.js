@@ -23,6 +23,5 @@ export default function AllBroken(bricks, player, canvas, ballObj) {
         ResetBall(ballObj, canvas, paddleProps);
         ballObj.speed = 15
         brickObj.y = 50;
-
     }
 }
