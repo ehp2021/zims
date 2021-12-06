@@ -13,15 +13,17 @@ export default function AllBroken(bricks, player, canvas, ballObj) {
             total++;
         }
     }
-    if (total === bricks.length) {
-        alert("Moving to Next Level!");
+    if (player.score === 100) {
+        alert("Bonus Level unlocked!");
         bricks.length = 0;
         player.lives = 2;
         player.level = 1;
-        player.score = 100;
+        //player.score = 100;
         //
         ResetBall(ballObj, canvas, paddleProps);
-        ballObj.speed = 15
+        ballObj.speed = 5;
         brickObj.y = 50;
     }
+
+
 }

@@ -48,14 +48,16 @@ export default function Board() {
             //if games is complete
 
 
-            if (player.lives === 0) {
-                alert("Game Over");
+            if (player.lives === 0 || player.score === 200) {
+                alert("You're done!");
             setUserData({points:(user.attributes.points+(player.score*2))})
                 //window.location.href = "/games";
            NavigateBrick('/games')
            //window.location.reload(true)
            window.location.replace('/games')
             }
+
+           
 
             bricks.map((brick) => {
                 return brick.draw(ctx);

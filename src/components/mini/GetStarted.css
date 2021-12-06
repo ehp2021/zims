@@ -1,0 +1,11 @@
+.step-number {
+  background-color: var(--color-basic-3);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--space-28);
+  font-size: var(--font-size-14);
+  color: var(--color-basic-6);
+  width: var(--space-28);
+}

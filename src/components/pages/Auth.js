@@ -1,7 +1,9 @@
 import React from 'react';
 import { useMoralis } from 'react-moralis';
-import { Button, Flex, Heading } from '@chakra-ui/react';
+import { Button, Flex, Heading, Text } from '@chakra-ui/react';
 import Video from '../../assets/videos/bg-video.mp4';
+// import GetStarted from '../mini/GetStarted';
+import './Auth.css'
 
 const Auth = () => {
   const { authenticate, isAuthenticated, isAuthenticating, logout } = useMoralis();
@@ -21,9 +23,10 @@ const Auth = () => {
 
       <div className='center-stuff'>
         <Flex w='100%' p={4} align='center' justify='center' direction='column'>
-          <Heading zIndex={1} color='white'>
-            Welcome to the new world
+          <Heading className="zims-logo-main" zIndex={1} color='white'>
+            ZIMS
           </Heading>
+          <Text align='center' className="zims-motto">Play Games. Win Points. Mint NFTs. </Text>
           <Button
             m={4}
             zIndex={1}
