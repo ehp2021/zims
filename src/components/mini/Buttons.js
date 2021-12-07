@@ -7,11 +7,8 @@ const Buttons = ({ id, name, points, icon, clickHandler, isDisabled, durationTim
   const previousClick = +localStorage.getItem('lastClicked' + name); 
   
   const [timeLeft, setTimeLeft] = useState(Date.now() - previousClick);
-  // console.log(previousClick, 'last click')
-  // console.log(Date.now(), 'datenow')
-  // console.log(timeLeft, Date.now() - previousClick, "timeleft?")
 
-  isDisabled &&  console.log(previousClick + 10000 - Date.now(), 'SUM', name) 
+
 
   // Random component
 const Completionist = () => <span>You are good to go!</span>;

@@ -56,7 +56,7 @@ const HeroSection = () => {
               transition='all .2s ease-in-out'
               _hover={{ bg: 'orange.300', transform: 'scale(1.03) translateY(-3px)' }}
               _active={{ transform: 'translateY(1px)' }}
-              onClick={() => (!isAuthenticated ? authenticate() : logout())}
+              onClick={() => authenticate()}
               isLoading={isAuthenticating}
               borderRadius='100px'
             >
@@ -67,7 +67,7 @@ const HeroSection = () => {
               Sign in with Metamask
             </Button>
             <Box pos='absolute' transform='translateY(230px)' cursor='pointer'>
-              <Link to={'Getting Started'} smooth={true} duration={500} spy={true}>
+              <Link to={'Getting Started'} smooth={true} duration={500} spy={true} offset={-60}>
                 <FaAngleDoubleDown className='arrow' />
               </Link>
             </Box>

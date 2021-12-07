@@ -19,14 +19,14 @@ const Carousel = () => {
                   justify='space-evenly'
                   align='center'
                   mb='1.5rem'
-                  bg='#878383c1'
+                  bg='#1a3339'
                   p='15px'
                   borderRadius='5px'
                   transition='all 0.2s ease'
                   w={{ base: '400px', md: '700px' }}
                   _hover={{
                     cursor: 'pointer',
-                    boxShadow: ' 0 1px 7px 0 #878383c1',
+                    boxShadow: ' 0 1px 7px 0 #1a3339',
                     transform: 'scale(1.03)',
                   }}
                 >

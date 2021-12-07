@@ -84,7 +84,6 @@ export default function Board() {
                 brickCollision = BrickCollision(ballObj, bricks[i]);
 
                 if (brickCollision.hit && !bricks[i].broke) {
-                    // console.log(brickCollision);
                     if (brickCollision.axis === "X") {
                         ballObj.dx *= -1;
                         bricks[i].broke = true;

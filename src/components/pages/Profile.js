@@ -24,7 +24,7 @@ const Profile = () => {
           m='0 auto'
           mt='4rem'
           w={{ base: 'none', xl: '75%' }}
-          mr={{ base: 'none', xl: '1rem' }}
+          mr={{ base: 'none', xl: '1rem', '2xl': '4rem' }}
         >
           <Stack justify='center' align='center'>
             <Grid

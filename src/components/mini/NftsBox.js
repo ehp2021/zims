@@ -6,7 +6,6 @@ import { useMoralis, useMoralisQuery } from 'react-moralis';
 const NftsBox = () => {
   const { data } = useMoralisQuery('mintedNFTs');
   const { user } = useMoralis();
-  // console.log(data);
 
 
   return (

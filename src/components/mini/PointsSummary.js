@@ -23,7 +23,6 @@ const PointsSummary = () => {
 
         useEffect(() => {
             refetchUserData();
-            console.log(data.filter(data => (data.attributes.user.id === user.id)), "points summary your data only")
         }, [isLoading]);
 
         return ( <div className = "points-summary-container">

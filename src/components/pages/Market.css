@@ -11,6 +11,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .market-title {
@@ -19,11 +20,9 @@
     text-align: center;
     font-family: 'Press Start 2P';
     font-size: 40px;
-    /* transform: skewY(-7deg); */
     letter-spacing: 4px;
     word-spacing: -8px;
     color: white;
-    /* text-shadow: -1px -1px 0 rgb(189, 223, 219), -2px -2px 0 rgb(189, 223, 219), -3px -3px 0 rgb(189, 223, 219), -4px -4px 0 rgb(189, 223, 219), -5px -5px 0 rgb(189, 223, 219), -6px -6px 0 rgb(189, 223, 219), -7px -7px 0 rgb(189, 223, 219), -8px -8px 0 rgb(189, 223, 219), -30px 20px 40px dimgrey; */
 }
 
 .coming-soon {
@@ -43,4 +42,5 @@
 
 .img-fade {
     opacity: 0.3;
+    height: calc(100vh - 8rem);
 }

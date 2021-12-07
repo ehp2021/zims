@@ -32,7 +32,6 @@ export default class FloppyApp extends Component {
     function jump() {
       if (birdBottom < 500) birdBottom += 50;
       bird.style.bottom = birdBottom + "px";
-      console.log(birdBottom);
     }
     document.addEventListener("keyup", control);
   
@@ -82,7 +81,6 @@ export default class FloppyApp extends Component {
   
     function gameOver() {
       clearInterval(gameTimerId);
-      console.log("game over");
       isGameOver = true;
       document.removeEventListener("keyup", control);
       ground.classList.add("ground");

@@ -20,13 +20,13 @@ const words = ['application', 'programming', 'interface', 'wizard', 'luxury', 't
     'hundred', 'hungry', 'hour', 'hurry', 'husband',
     'jelly', 'juice', 'machine', 'mention', 'method', 'middle', 'milk',
     'queen', 'question', 'vegetable', "tapeable",
-    "costless", "exhumed", "horsts", "detesters","clangs", "uncrating", "medicine", "outbuild", "cosmopolitian",
-    "monologued", "prioritizations", "climatology","odoriferously","outsee",
-    "trolling","monarch","proteolytic","syndicators","belted","thunderbolt","septal",
-    "cojoin","lines","soppiness","foilable","canalize","ridgling","objectification","aground",
-    "turbulence","dieseled","liberalisms",
-    "curtsy","devaluates","glaring","influentially","fettucine","colloquialisms",
-    "seadog","chomp","smudged",
+    "costless", "exhumed", "horsts", "detesters", "clangs", "uncrating", "medicine", "outbuild", "cosmopolitian",
+    "monologued", "prioritizations", "climatology", "odoriferously", "outsee",
+    "trolling", "monarch", "proteolytic", "syndicators", "belted", "thunderbolt", "septal",
+    "cojoin", "lines", "soppiness", "foilable", "canalize", "ridgling", "objectification", "aground",
+    "turbulence", "dieseled", "liberalisms",
+    "curtsy", "devaluates", "glaring", "influentially", "fettucine", "colloquialisms",
+    "seadog", "chomp", "smudged",
     "quintupling",
     "directionless",
     "capris",
@@ -104,11 +104,11 @@ const words = ['application', 'programming', 'interface', 'wizard', 'luxury', 't
     "cladistic",
     "oversimplified",
     "treacherousness",
-    "headstays","serenely","elusiveness","cochairwoman","frowner","dayflowers",
-    "occipital","reservednesses","decarboxylating","percent",
-    "aloofly","proscriptions","charpais","zebrawoods","presentees","acridnesses",
-    "palliated","snorkeler","hairbrush","unassailability","prickier", "overestimations", "citational","supertight",
-"nonporous","disinterests","sharpened",
+    "headstays", "serenely", "elusiveness", "cochairwoman", "frowner", "dayflowers",
+    "occipital", "reservednesses", "decarboxylating", "percent",
+    "aloofly", "proscriptions", "charpais", "zebrawoods", "presentees", "acridnesses",
+    "palliated", "snorkeler", "hairbrush", "unassailability", "prickier", "overestimations", "citational", "supertight",
+    "nonporous", "disinterests", "sharpened",
 ];
 let selectedWord = words[Math.floor(Math.random() * words.length)];
 
@@ -119,16 +119,6 @@ function HangmanApp() {
     const [wrongLetters, setWrongLetters] = useState([]);
     const [showNotification, setShowNotification] = useState(false);
 
-    // async function getWord () {
-    //   const result = await axios.get('https://random-word-api.herokuapp.com/word?number=1');
-    //   console.log(result.data[0], "HANGMAN WORD API")
-    //   setWord(result.data[0]);
-    //   return result.data[0]
-    // }
-
-    // useEffect(() => {
-    //   getWord()
-    // },[])
 
     useEffect(() => {
         const handleKeydown = event => {
@@ -166,26 +156,33 @@ function HangmanApp() {
         selectedWord = words[random];
     }
 
-    return ( 
-      <div className = "hangman-box" >
-        <div className = "sidebar-box" >
-        <Sidebar/>
-        </div>
+    return ( <
+        div className = "hangman-box" >
+        <
+        div className = "sidebar-box" >
+        <
+        Sidebar / >
+        <
+        /div>
 
-        <Header/>
-        <div className = "hangman-container" >
-        <Figure wrongLetters = { wrongLetters }
-        /><WrongLetters wrongLetters = { wrongLetters }
-        /><Word selectedWord = { selectedWord }
+        <
+        Header / >
+        <
+        div className = "hangman-container" >
+        <
+        Figure wrongLetters = { wrongLetters }
+        /><WrongLetters wrongLetters = { wrongLetters } /
+        > < Word selectedWord = { selectedWord }
         correctLetters = { correctLetters }
-        /> </div> <Popup correctLetters = { correctLetters }
+        /> </div > < Popup correctLetters = { correctLetters }
         wrongLetters = { wrongLetters }
         selectedWord = { selectedWord }
         setPlayable = { setPlayable }
         playAgain = { playAgain }
-        /><Notification showNotification = { showNotification }
-        /> 
-        </div>
+        /><Notification showNotification = { showNotification } /
+        >
+        <
+        /div>
     );
 }
 

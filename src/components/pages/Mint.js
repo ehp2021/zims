@@ -124,12 +124,13 @@ const Mint = () => {
         m='0 auto'
         w={{ base: 'none', xl: '70%' }}
         mt='6rem'
-        mr={{ base: 'none', xl: '0', '2xl': '-8rem' }}
+        mr={{ base: 'none', xl: '1rem', '2xl': '-8rem' }}
+
       >
         <Flex direction='column' align='center' justify='center' textAlign='center' >
           <Text
             className='nft-title'
-            mt='1rem'
+            mt='2rem'
             mb='5rem'
             fontSize={{ base: '2rem', sm: '3rem', md: '3.5rem' }}
           >
