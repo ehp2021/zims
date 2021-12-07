@@ -101,6 +101,9 @@ const Navbar = () => {
             <Text ml={6} onClick={() => navigate('/games')}>
               Arcade
             </Text>
+            <Text ml={6} onClick={() => navigate('/marketplace')}>
+              Marketplace
+            </Text>
           </Flex>
         </Flex>
         <Stack

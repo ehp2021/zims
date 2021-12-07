@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+.market-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.market-right {
+    border: 2px gold;
+    color: gold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.market-title {
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 4px #f5f5f54c;
+    text-align: center;
+    font-family: 'Press Start 2P';
+    font-size: 40px;
+    /* transform: skewY(-7deg); */
+    letter-spacing: 4px;
+    word-spacing: -8px;
+    color: white;
+    /* text-shadow: -1px -1px 0 rgb(189, 223, 219), -2px -2px 0 rgb(189, 223, 219), -3px -3px 0 rgb(189, 223, 219), -4px -4px 0 rgb(189, 223, 219), -5px -5px 0 rgb(189, 223, 219), -6px -6px 0 rgb(189, 223, 219), -7px -7px 0 rgb(189, 223, 219), -8px -8px 0 rgb(189, 223, 219), -30px 20px 40px dimgrey; */
+}
+
+.coming-soon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    --interval: 1s;
+    font-family: Monoton;
+    font-size: 130px;
+    text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px rgb(255, 251, 0), 0 0 42px rgb(255, 251, 0), 0 0 82px rgb(255, 251, 0), 0 0 92px rgb(255, 251, 0), 0 0 102px #0fa, 0 0 151px #0fa;
+    color: gold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+}
+
+.img-fade {
+    opacity: 0.3;
+}

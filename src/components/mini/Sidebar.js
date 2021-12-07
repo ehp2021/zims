@@ -59,11 +59,11 @@ const Sidebar = ({ isMobile }) => {
             </Link>
           </>
         )}
-        <Box my={4}>
+        <Flex my={4} textAlign='center' >
           <Text className='zimFont' size='md'>
             {user.attributes.username || 'ZIMUSER'}
           </Text>
-        </Box>
+        </Flex>
         <Box my={2}>
           <Heading size='md'>Points:</Heading>
           <Text>

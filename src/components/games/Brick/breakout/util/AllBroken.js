@@ -8,12 +8,14 @@ export default function AllBroken(bricks, player, canvas, ballObj) {
 
 
     let total = 0;
+
     for (let i = 0; i < bricks.length; i++) {
         if (bricks[i].broke === true) {
             total++;
         }
     }
-    if (player.score === 100) {
+
+    if (total === bricks.length) {
         alert("Bonus Level unlocked!");
         bricks.length = 0;
         player.lives = 2;
@@ -21,8 +23,10 @@ export default function AllBroken(bricks, player, canvas, ballObj) {
         //player.score = 100;
         //
         ResetBall(ballObj, canvas, paddleProps);
-        ballObj.speed = 5;
+        ballObj.speed = 10;
         brickObj.y = 50;
+
+
     }
 
 

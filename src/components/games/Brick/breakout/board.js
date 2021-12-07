@@ -48,9 +48,17 @@ export default function Board() {
             //if games is complete
 
 
-            if (player.lives === 0 || player.score === 200) {
-                alert("You're done!");
+            if (player.lives === 0) {
+                alert("GAME OVER");
             setUserData({points:(user.attributes.points+(player.score*2))})
+                //window.location.href = "/games";
+           NavigateBrick('/games')
+           //window.location.reload(true)
+           window.location.replace('/games')
+            }
+            if (player.score === 200) {
+                alert("Congratulations! You made 200 points!")
+                setUserData({points:(user.attributes.points+(player.score*2))})
                 //window.location.href = "/games";
            NavigateBrick('/games')
            //window.location.reload(true)

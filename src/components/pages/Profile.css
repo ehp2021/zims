@@ -2,11 +2,11 @@
 .button-id {
     font-family: 'Press Start 2P';
     box-shadow: 0 1px 7px 0 rgb(136, 136, 136);
-    background: #4FD1C5;
-    background: linear-gradient(90deg, rgba(129, 230, 217, 1) 0%, rgba(79, 209, 197, 1) 100%);
+    background: #4fd1c5;
+    background: linear-gradient( 90deg, rgba(129, 230, 217, 1) 0%, rgba(79, 209, 197, 1) 100%);
     border: none;
     border-radius: 1200px;
-    box-shadow: 12px 12px 24px rgba(79, 209, 197, .64);
+    box-shadow: 12px 12px 24px rgba(79, 209, 197, 0.64);
     transition: all 0.3s ease-in-out 0s;
     cursor: pointer;
     outline: none;
@@ -20,18 +20,15 @@
 .nft-box {
     overflow-x: scroll;
     padding: 3rem;
-    /* margin-left: 20px; */
 }
 
 .nft-box::-webkit-scrollbar {
-    /* margin-bottom: 50px; */
-    /* -webkit-border-radius: 40px; */
     background-color: none;
     height: 7px;
     transform: translateY(-10px);
 }
 
 .nft-box::-webkit-scrollbar-thumb {
-    background-color: #4FD1C5;
+    background-color: #4fd1c5;
     border-radius: 100px;
 }

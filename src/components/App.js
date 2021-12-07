@@ -7,6 +7,8 @@ import Home from './pages/Home';
 import Settings from './pages/Settings';
 import Navbar from './mini/Navbar';
 import Mint from './pages/Mint';
+import Market from './pages/Market'
+
 import Games from './pages/Games'
 import HangmanApp from './games/Hangman/HangmanApp';
 import FloppyApp from './games/Floppy/FloppyApp';
@@ -16,7 +18,7 @@ import Tetris from './games/Tetris/Tetris'
 const App = () => {
         const { isAuthenticated } = useMoralis();
         return ( <>
-                <Router> { isAuthenticated && < Navbar / > } 
+                <Router> { isAuthenticated && < Navbar/ > } 
                 
                 <Routes> {!isAuthenticated && < Route path = '/'
                     element = { < Auth/> }
@@ -41,6 +43,10 @@ const App = () => {
 												<Route
                         path = '/games'
                         element = { isAuthenticated ? < Games /> : < Navigate to = '/' /> }
+                        /> 
+                        <Route
+                        path = '/marketplace'
+                        element = { isAuthenticated ? < Market/> : < Navigate to = '/' /> }
                         /> 
 												<Route
                         path = '/hangman'

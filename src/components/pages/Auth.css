@@ -1,18 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
 .zims-logo-main {
-  font-family: 'Press Start 2P';
-  font-size: 170px;
-  transform: skewY(-7deg);
-  letter-spacing: 14px;
-    /* word-spacing: -8px; */
+    font-family: 'Press Start 2P';
+    transform: skewY(-7deg);
+    letter-spacing: 14px;
     transition: all 0.2s ease;
     color: rgb(95, 194, 184);
-    text-shadow: -10px -10px 0 rgb(189, 223, 219), -10px -10px 0 rgb(189, 223, 219), -3px -3px 0 rgb(189, 223, 219), -4px -4px 0 rgb(189, 223, 219), -5px -5px 0 rgb(189, 223, 219), -6px -6px 0 rgb(189, 223, 219), -7px -7px 0 rgb(189, 223, 219), -8px -8px 0 rgb(189, 223, 219), -30px 20px 40px dimgrey
-
-}
-
-.zims-motto {
-  margin-top: 30px;
-  font-size: 35px;
+    text-shadow: -10px -10px 0 rgb(189, 223, 219), -10px -10px 0 rgb(189, 223, 219), -3px -3px 0 rgb(189, 223, 219), -4px -4px 0 rgb(189, 223, 219), -5px -5px 0 rgb(189, 223, 219), -6px -6px 0 rgb(189, 223, 219), -7px -7px 0 rgb(189, 223, 219), -8px -8px 0 rgb(189, 223, 219), -30px 20px 40px dimgrey;
 }
