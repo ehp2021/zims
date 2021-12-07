@@ -92,6 +92,7 @@ export default class FloppyApp extends Component {
   }
   render() {
     return (
+      
       <div className="floppy-container">
         <div class="border-left"></div>
             <div class="game-container">
@@ -114,6 +115,7 @@ export default class FloppyApp extends Component {
             onClick={()=>window.location.reload()}
           >Restart Game</Button>
       </div>
+      
     )
   }
 }

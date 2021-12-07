@@ -12,7 +12,7 @@ const Market = () => {
         m='0 auto'
         w={{ base: 'none', xl: '80%' }}
         mt='6rem'
-        mr={{ base: 'none', xl: '-1rem', '2xl': '-8rem' }}
+        mr={{ base: 'none', xl: '1rem', '2xl': '-8rem' }}
          > 
       <div className="market-right">  
         <div className="market-title">Marketplace</div>

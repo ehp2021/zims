@@ -15,7 +15,7 @@ export default function AllBroken(bricks, player, canvas, ballObj) {
         }
     }
 
-    if (total === bricks.length) {
+    if (total === bricks.length && player.score === 100) {
         alert("Bonus Level unlocked!");
         bricks.length = 0;
         player.lives = 2;

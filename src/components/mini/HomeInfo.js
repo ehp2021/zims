@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Flex, Heading, Text, Box , Image} from '@chakra-ui/react';
+import { Flex, Text, Image} from '@chakra-ui/react';
 
 const HomeInfo = ({ color, title, description, image}) => {
 

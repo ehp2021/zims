@@ -1,16 +1,13 @@
 import {
-  Grid,
-  GridItem,
-  Center,
   Box,
-  useColorModeValue,
-  Heading,
   Text,
   Stack,
   Button,
   Image,
   Flex,
   SimpleGrid,
+  useToast,
+  Heading
 } from '@chakra-ui/react';
 
 import './Mint.css';
@@ -19,31 +16,20 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import {
   useMoralis,
-  useMoralisWeb3Api,
-  useNewMoralisObject,
-  useMoralisFile,
-  useMoralisCloudFunction,
-  useWeb3ExecuteFunction,
-  useNFTBalances,
 } from 'react-moralis';
 import contractAbi from '../../abis/ZimCollectables';
-import Web3 from 'web3';
 
 const Mint = () => {
-  const [contract, setContract] = useState(null);
-  const [address, setAddress] = useState(null);
   const [NFTs, setNFTs] = useState([]);
   const [NFTsFetched, setNFTsFetched] = useState(false);
-  const [isDisabled, setIsDisabled] = useState(true);
-  const { user, Moralis, enableWeb3, isWeb3Enabled, setUserData } = useMoralis();
-  const { isUploading, moralisFile, saveFile } = useMoralisFile();
-  const { getNFTBalances, data, isLoading, isFetching } = useNFTBalances();
+  const { user, Moralis, enableWeb3, setUserData } = useMoralis();
   const contractAddress = '0xF5E8eB2E6B792faD9E021c149ac26f22f4DBc566';
 
   const [newPoints, setNewPoints] = useState(user.attributes.points);
 
   const MintedNFTs = Moralis.Object.extend('mintedNFTs');
   const minted = new MintedNFTs();
+  const toast = useToast()
 
   async function ItemNFT(nft) {
     minted.set('photo', nft.photo);
@@ -63,12 +49,9 @@ const Mint = () => {
 
   useEffect(() => {
     enableWeb3();
-    if (isWeb3Enabled) {
-      console.log('web3 is enabled');
-    }
-    getNFTBalances({ params: { chain: '0x1' } });
+
   }, []);
-  // console.log(JSON.stringify(data, null, 2));
+
 
   useEffect(() => {
     getAll();
@@ -78,7 +61,7 @@ const Mint = () => {
     setUserData({ points: newPoints });
   }, [newPoints]);
 
-  const ABI = contractAbi.abi[20];
+
 
   const abi = [
     {
@@ -107,17 +90,7 @@ const Mint = () => {
     },
   ];
 
-  // const newAbi = [{
-  //     inputs: [{
-  //         internalType: 'string',
-  //         name: 'tokenURI',
-  //         type: 'string',
-  //     }, ],
-  //     name: 'mintToken',
-  //     outputs: [],
-  //     stateMutability: 'nonpayable',
-  //     type: 'function',
-  // }, ];
+
 
   const MintNFT = async nft => {
     const options = {
@@ -130,16 +103,18 @@ const Mint = () => {
       },
     };
     const receipt = await Moralis.executeFunction(options);
-    console.log(receipt, '***RECEIPT');
-
     const nftPoints = nft.price;
-    // console.log(newPoints - parseInt(nftPoints), 'Line 121');
     ItemNFT(nft);
     setNewPoints(prev => prev - parseInt(nftPoints));
-    alert(`You have minted ${nft.title}`);
+    toast({ 
+      title: 'You successfully minted tour NFT',
+    description: "Transaction hash: " + receipt.events[0].transactionHash ,
+    status: 'success',
+    duration: 9000,
+    isClosable: true,});
   };
 
-  // console.log(ABI);
+
 
   return (
     <>

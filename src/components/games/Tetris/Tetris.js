@@ -1,7 +1,7 @@
 import React from 'react'
 import Tetris from 'react-tetris';
 import './Tetris.css';
-import { Flex, Text } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import {useNavigate } from 'react-router-dom'
 import {useMoralis} from 'react-moralis'
 

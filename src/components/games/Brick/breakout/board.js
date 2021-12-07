@@ -50,14 +50,14 @@ export default function Board() {
 
             if (player.lives === 0) {
                 alert("GAME OVER");
-            setUserData({points:(user.attributes.points+(player.score*2))})
+            setUserData({points:(user.attributes.points+(player.score))})
                 //window.location.href = "/games";
            NavigateBrick('/games')
            //window.location.reload(true)
            window.location.replace('/games')
             }
             if (player.score === 200) {
-                alert("Congratulations! You made 200 points!")
+                alert("Congratulations! You are a true Brick Breaker!")
                 setUserData({points:(user.attributes.points+(player.score*2))})
                 //window.location.href = "/games";
            NavigateBrick('/games')

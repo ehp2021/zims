@@ -1,6 +1,6 @@
 import React,{ Fragment } from 'react';
 import { useMoralis } from 'react-moralis';
-import { Button, Flex, Heading, Text, Link } from '@chakra-ui/react';
+import { Button, Link } from '@chakra-ui/react';
 import { Element } from 'react-scroll';
 // import Video from '../../assets/videos/bg-video.mp4';
 import Image1 from '../../assets/images/gettingstarted.png';
@@ -50,6 +50,7 @@ const Auth = () => {
               <img
                 src='https://raw.githubusercontent.com/MetaMask/brand-resources/c3c894bb8c460a2e9f47c07f6ef32e234190a7aa/SVG/metamask-fox.svg'
                 style={{ height: '2rem', marginRight: '1rem' }}
+                alt='meta-mask icon'
               />
               Sign in with Metamask
             </Button>

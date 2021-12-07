@@ -1,10 +1,32 @@
 import React, { useState } from 'react';
 import { Button } from '@chakra-ui/react';
 import Countdown from 'react-countdown';
+import moment from 'moment';
 
-const Buttons = ({ id, name, points, durationTime, icon, clickHandler, isDisabled }) => {
-  const previousClick = +localStorage.getItem('lastClicked' + name);
+const Buttons = ({ id, name, points, icon, clickHandler, isDisabled, durationTime }) => {
+  const previousClick = +localStorage.getItem('lastClicked' + name); 
+  
   const [timeLeft, setTimeLeft] = useState(Date.now() - previousClick);
+  // console.log(previousClick, 'last click')
+  // console.log(Date.now(), 'datenow')
+  // console.log(timeLeft, Date.now() - previousClick, "timeleft?")
+
+  isDisabled &&  console.log(previousClick + 10000 - Date.now(), 'SUM', name) 
+
+  // Random component
+const Completionist = () => <span>You are good to go!</span>;
+
+// Renderer callback with condition
+const renderer = ({ hours, minutes, seconds, completed }) => {
+  if (completed) {
+    // Render a completed state
+    return <span>{hours}:{minutes}:{seconds}</span>;
+  } else {
+    // Render a countdown
+    return <span>{hours}:{minutes}:{seconds}</span>;
+  }
+};
+
   return (
     <Button
       className='zimFont'
@@ -40,8 +62,9 @@ const Buttons = ({ id, name, points, durationTime, icon, clickHandler, isDisable
           ></i>
         </>
       ) : (
-        <Countdown date={Date.now() + timeLeft} />
-      )}
+        <Countdown date={Date.now() + previousClick + durationTime - Date.now()}
+       />
+        )}
     </Button>
   );
 };

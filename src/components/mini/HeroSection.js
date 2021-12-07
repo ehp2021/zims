@@ -1,6 +1,6 @@
 import React from 'react';
 import { useMoralis } from 'react-moralis';
-import { Button, Flex, Heading, Text, Image, Box } from '@chakra-ui/react';
+import { Button, Flex, Text, Box } from '@chakra-ui/react';
 import { Link } from 'react-scroll';
 import { FaAngleDoubleDown } from 'react-icons/fa';
 import Video from '../../assets/videos/bg-video.mp4';
@@ -63,7 +63,7 @@ const HeroSection = () => {
               <img
                 src='https://raw.githubusercontent.com/MetaMask/brand-resources/c3c894bb8c460a2e9f47c07f6ef32e234190a7aa/SVG/metamask-fox.svg'
                 style={{ height: '2rem', marginRight: '1rem' }}
-              />
+               alt='meta-mask icon'/>
               Sign in with Metamask
             </Button>
             <Box pos='absolute' transform='translateY(230px)' cursor='pointer'>

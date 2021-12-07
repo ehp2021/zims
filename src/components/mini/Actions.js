@@ -35,19 +35,40 @@ const Actions = () => {
     const storageId = 'lastClicked' + type;
     if (localStorage.getItem(storageId)) {
       const previousClick = +localStorage.getItem(storageId);
-      if (Date.now() > previousClick + time) dispatch(enable(`${type}`));
+      if (Date.now() > previousClick + time) {
+         dispatch(enable(`${type}`));
+         localStorage.removeItem(storageId)
+    }
     }
   };
+
+  const EVERY_6_HOURS = 21600000
+  const EVERY_8_HOURS = 28800000
+  const EVERY_12_HOURS = 43200000
+  const EVERY_16_HOURS = 57600000
+  const ONCE_A_DAY = 86400000
 
   useEffect(() => {
     setUserData({ points: points });
     const timer = setInterval(() => {
-      calculateTime('work', 100000);
-      calculateTime('workout', 10000);
-      calculateTime('meditate', 100000);
-      calculateTime('volunteer', 100000);
-      calculateTime('shower', 10000);
-      calculateTime('party', 10000);
+      calculateTime('work', ONCE_A_DAY);
+      calculateTime('workout', EVERY_12_HOURS);
+      calculateTime('meditate', EVERY_6_HOURS);
+      calculateTime('volunteer', EVERY_16_HOURS);
+      calculateTime('shower', EVERY_8_HOURS);
+      calculateTime('party', ONCE_A_DAY);
+      // dispatch(enable('work'))
+      // dispatch(enable('workout'))
+      // dispatch(enable('meditate'))
+      // dispatch(enable('volunteer'))
+      // dispatch(enable('shower'))
+      // dispatch(enable('party'))
+      // calculateTime('work', ONCE_A_DAY);
+      // calculateTime('workout', EVERY_12_HOURS);
+      // calculateTime('meditate', EVERY_6_HOURS);
+      // calculateTime('volunteer', EVERY_16_HOURS);
+      // calculateTime('shower', EVERY_8_HOURS);
+      // calculateTime('party', ONCE_A_DAY);
     }, 1000);
     return () => clearInterval(timer);
   }, [points]);
@@ -65,8 +86,8 @@ const Actions = () => {
             <Buttons
               name='work'
               id='work'
-              points={1000}
-              durationTime={10000}
+              points={500}
+              durationTime={ONCE_A_DAY}
               icon={'fas fa-briefcase'}
               clickHandler={clickHandler}
               isDisabled={work}
@@ -75,16 +96,16 @@ const Actions = () => {
               name='workout'
               id='workout'
               points={100}
-              durationTime={10000}
+              durationTime={EVERY_12_HOURS}
               icon={'fas fa-dumbbell'}
               clickHandler={clickHandler}
               isDisabled={workout}
             />
             <Buttons
-              name={'meditate'}
+              name='meditate'
               id='meditate'
               points={100}
-              durationTime={10000}
+              durationTime={ EVERY_6_HOURS}
               icon={'fas fa-balance-scale'}
               clickHandler={clickHandler}
               isDisabled={meditate}
@@ -95,7 +116,7 @@ const Actions = () => {
               name='volunteer'
               id='volunteer'
               points={100}
-              durationTime={10000}
+              durationTime={EVERY_16_HOURS}
               icon={'fas fa-hands-helping'}
               clickHandler={clickHandler}
               isDisabled={volunteer}
@@ -104,7 +125,7 @@ const Actions = () => {
               name={'party'}
               id='party'
               points={100}
-              durationTime={10000}
+              durationTime={ONCE_A_DAY}
               icon={'fas fa-glass-martini'}
               clickHandler={clickHandler}
               isDisabled={party}
@@ -113,7 +134,7 @@ const Actions = () => {
               name={'shower'}
               id='shower'
               points={100}
-              durationTime={10000}
+              durationTime={EVERY_8_HOURS}
               icon={'fas fa-shower'}
               clickHandler={clickHandler}
               isDisabled={shower}

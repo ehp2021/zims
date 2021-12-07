@@ -1,10 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMoralis } from 'react-moralis';
-import { BsMoonFill, BsFillSunFill, BsPersonFill, BsCaretDownFill } from 'react-icons/bs';
+import { BsPersonFill, BsCaretDownFill } from 'react-icons/bs';
 import { HiLogout } from 'react-icons/hi';
 import { SiApplearcade } from 'react-icons/si';
-import { IoSettings } from 'react-icons/io5';
+import { IoSettings, IoStorefront } from 'react-icons/io5';
 import Sidebar from './Sidebar';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import {
@@ -53,11 +53,11 @@ const Navbar = () => {
         w='100%'
         align='center'
         justify='center'
-        bg={useColorModeValue('gray.300', 'gray.800')}
-        color={useColorModeValue('gray.600', 'white')}
+        bg='gray.800'
+        color='white'
         borderBottom={1}
         borderStyle={'solid'}
-        borderColor={useColorModeValue('gray.200', 'gray.900')}
+        borderColor='gray.900'
       >
         <Flex
           flex={{ base: 1, lg: 'auto' }}
@@ -73,7 +73,7 @@ const Navbar = () => {
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', lg: 'start' }}>
           <Text
-            color={useColorModeValue('gray.800', 'white')}
+            color='white'
             cursor={'pointer'}
             onClick={() => {
               navigate('/');
@@ -82,7 +82,7 @@ const Navbar = () => {
             <Text
               className='zimFont'
               fontSize='30px'
-              color={useColorModeValue('orange.500', 'gold')}
+              color='gold'
             >
               ZIMS
             </Text>
@@ -90,7 +90,7 @@ const Navbar = () => {
           <Flex
             fontFamily={'heading'}
             textAlign={['center', 'left']}
-            color={useColorModeValue('gray.800', 'white')}
+            color='white'
             display={{ base: 'none', xl: 'inline-flex' }}
             cursor='pointer'
             marginTop='10px'
@@ -112,12 +112,6 @@ const Navbar = () => {
           direction={'row'}
           spacing={6}
         >
-          <IconButton
-            onClick={toggleColorMode}
-            icon={colorMode === 'light' ? <BsFillSunFill /> : <BsMoonFill />}
-            display={{ base: 'none', xl: 'inline-flex' }}
-            aria-label='Toggle color mode'
-          ></IconButton>
           <Button
             onClick={Logout}
             display={{ base: 'none', xl: 'inline-flex' }}
@@ -144,6 +138,9 @@ const Navbar = () => {
               </MenuItem>
               <MenuItem icon={<SiApplearcade />} onClick={() => onClick('games')}>
                 Arcade
+              </MenuItem>
+              <MenuItem icon={<IoStorefront />} onClick={() => onClick('marketplace')}>
+                Marketplace
               </MenuItem>
               <MenuItem icon={<IoSettings />} onClick={() => onClick('settings')}>
                 Settings

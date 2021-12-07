@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useMoralis, useMoralisFile } from 'react-moralis';
+import { useMoralis } from 'react-moralis';
 import FileBase64 from 'react-file-base64';
 import {
   Flex,

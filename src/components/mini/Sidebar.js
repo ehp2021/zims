@@ -1,4 +1,4 @@
-import React, { useEffect, useNavigate } from 'react';
+import React, { useEffect } from 'react';
 import { useMoralis } from 'react-moralis';
 import { Link } from 'react-router-dom';
 import {

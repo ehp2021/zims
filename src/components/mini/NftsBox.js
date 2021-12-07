@@ -1,12 +1,10 @@
 import { Box, Flex, Heading, Text, Stack, Image } from '@chakra-ui/react';
 import { useMoralis, useMoralisQuery } from 'react-moralis';
 
-const IMAGE =
 
-  'https://images.pexels.com/photos/5126057/pexels-photo-5126057.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260';
 
 const NftsBox = () => {
-  const { data, error, isLoading } = useMoralisQuery('mintedNFTs');
+  const { data } = useMoralisQuery('mintedNFTs');
   const { user } = useMoralis();
   // console.log(data);
 

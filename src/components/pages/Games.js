@@ -1,19 +1,13 @@
-import HangmanApp from '../games/Hangman/HangmanApp';
-import FloppyApp from '../games/Floppy/FloppyApp';
 import Sidebar from '../mini/Sidebar';
 import { Flex, Text } from '@chakra-ui/react';
 import './Games.css'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useMoralis } from 'react-moralis'
-import { useState, useEffect } from 'react'
 
 const Games = () => {
     const { user, setUserData } = useMoralis()
-    const [newPoints, setNewPoints] = useState(user.attributes.points)
-    const navigate = useNavigate()
 
     function clickHandler(degrade) {
-        setNewPoints(prev => (prev - degrade))
         const rename = user.attributes.points - degrade;
         setUserData({points:rename})
     }

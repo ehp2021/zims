@@ -1,33 +1,20 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
 import { Grid, GridItem } from '@chakra-ui/react';
 import Sidebar from '../mini/Sidebar';
-import { useMoralis, useMoralisQuery } from 'react-moralis';
-import { FaBeer } from 'react-icons/fa';
-import moment from 'moment';
 
 import 'font-awesome/css/font-awesome.min.css';
 import PointsSummary from '../mini/PointsSummary';
 import NftsBox from '../mini/NftsBox';
-import Buttons from '../mini/Buttons';
 import Actions from '../mini/Actions';
 
 import {
-  Box,
   Center,
-  useColorModeValue,
-  Heading,
   Text,
   Stack,
-  Image,
   Flex,
-  HStack,
-  VStack,
 } from '@chakra-ui/react';
 
 const Profile = () => {
-  const { user, setUserData, Moralis } = useMoralis();
-  const { data, error, isLoading } = useMoralisQuery('Timestamp');
 
   return (
     <>
@@ -59,7 +46,7 @@ const Profile = () => {
 
               <GridItem colSpan={2} borderRadius='30px' bg='gray'>
                 <Text className='zimFont' p='2rem' color='white'>
-                  Actions to Get Pints
+                  Actions to Get Points
                 </Text>
                 <Center p='0 2rem 2rem 2rem'>
                   <Actions />
