@@ -32,7 +32,7 @@ const Auth = () => {
         <HomeInfo color='light' title={`Mint NFTs`} image={Image3}  description="Earn your NFTs by playing the games and using your points. "/>
       </Element>
       <Element name='Sign Up' style={{display: 'flex', justifyContent: 'center'}}>
-        <HomeInfo color='dark' title='Sign Up' style={{border: 'none'}} description ='Sign up and start earning points right now!' />
+        <HomeInfo color='dark' title='Sign Up' style={{border: 'none'}} description ='and start earning points right now!' />
       </Element>
     </>
   );

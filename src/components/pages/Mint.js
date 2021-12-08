@@ -23,7 +23,7 @@ const Mint = () => {
   const [NFTs, setNFTs] = useState([]);
   const [NFTsFetched, setNFTsFetched] = useState(false);
   const { user, Moralis, enableWeb3, setUserData } = useMoralis();
-  const contractAddress = '0xF5E8eB2E6B792faD9E021c149ac26f22f4DBc566';
+  const contractAddress = '0x56F105b7cdC3A0177cf79b2f67C8BA9f6BadE97f'; //zim coll address ganache
 
   const [newPoints, setNewPoints] = useState(user.attributes.points);
 
