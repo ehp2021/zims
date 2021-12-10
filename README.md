@@ -9,7 +9,7 @@ Check out our full demo video here: </br>
 https://www.youtube.com/watch?v=8g5ACWz_FC0
 
 
-# Collaborators 🤝
+# Collaborators 🤝 🤝 
 - [Ayaan Namazi](https://github.com/namaziay)
 - [Emily Park](https://github.com/ehp2021)
 - [Joao Felipe Silveira](https://github.com/accessjoao)
