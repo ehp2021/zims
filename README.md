@@ -4,7 +4,8 @@ Zims is a NFT-based online game platform which allows users to play arcade games
 ![screenshot](https://github.com/ehp2021/zims/blob/main/screenshot1.png)
 ![screenshot](https://github.com/ehp2021/zims/blob/main/screenshot2.png)
 
-Check out our full demo video here: https://www.youtube.com/watch?v=8g5ACWz_FC0 </br>
+Check out our full demo video here: 
+[![ZIMS demo](https://github.com/ehp2021/zims/blob/main/yt.png)](https://www.youtube.com/watch?v=8g5ACWz_FC0) </br>
 
 # Collaborators
 - [Ayaan Namazi](https://github.com/namaziay)
@@ -28,3 +29,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+# Tech Stack
+![screenshot](https://github.com/ehp2021/zims/blob/main/techstack.png)
