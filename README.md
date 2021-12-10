@@ -1,4 +1,3 @@
-# What is ZIMS?
 Zims is a NFT-based online game platform which allows users to play arcade games (Tetris, Brick Breaker, Hangman, Floppy Bird, and more to come) to earn points to mint NFTs.
 
 ![screenshot](https://github.com/ehp2021/zims/blob/main/screenshot1.png)
